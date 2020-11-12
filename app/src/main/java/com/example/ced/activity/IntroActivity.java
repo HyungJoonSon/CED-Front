@@ -1,4 +1,4 @@
-package com.example.ced;
+package com.example.ced.activity;
 
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
@@ -6,6 +6,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
+
+import com.example.ced.R;
 
 public class IntroActivity extends AppCompatActivity {
     @Override
@@ -19,7 +21,7 @@ public class IntroActivity extends AppCompatActivity {
         handler.postDelayed(new Runnable() {
             @Override
             public void run() {
-                Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+                Intent intent = new Intent(getApplicationContext(), LoginActivity.class);
                 startActivity(intent); //다음화면으로 넘어감
                 finish();
             }

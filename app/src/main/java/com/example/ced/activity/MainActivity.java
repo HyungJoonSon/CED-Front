@@ -1,8 +1,10 @@
-package com.example.ced;
+package com.example.ced.activity;
 
 import android.os.Bundle;
 
 import androidx.appcompat.app.AppCompatActivity;
+
+import com.example.ced.R;
 
 public class MainActivity extends AppCompatActivity {
 
