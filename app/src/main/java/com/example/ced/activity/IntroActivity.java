@@ -14,8 +14,8 @@ public class IntroActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_intro); //xml , java 소스 연결
-        ActionBar actionbar = getSupportActionBar();
-        actionbar.hide();
+//        ActionBar actionbar = getSupportActionBar();
+//        actionbar.hide();
 
         Handler handler = new Handler();
         handler.postDelayed(new Runnable() {
@@ -25,7 +25,7 @@ public class IntroActivity extends AppCompatActivity {
                 startActivity(intent); //다음화면으로 넘어감
                 finish();
             }
-        }, 1000); // 1초 뒤에 Runner객체 실행하도록 함
+        }, 500); // 1초 뒤에 Runner객체 실행하도록 함
     }
 
     @Override

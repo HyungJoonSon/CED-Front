@@ -3,7 +3,7 @@ package com.example.ced.data;
 import com.google.gson.annotations.SerializedName;
 
 public class JoinRequest {
-    @SerializedName("UserId")
+    @SerializedName("UserID")
     private String userId;
 
     @SerializedName("UserPwd")
@@ -15,6 +15,6 @@ public class JoinRequest {
     public JoinRequest(String userId, String userPwd, String userName) {
         this.userId = userId;
         this.userPwd = userPwd;
-        this.userName =userName;
+        this.userName = userName;
     }
 }

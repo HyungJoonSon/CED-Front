@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/action_user"
+        android:enabled="true"
+        android:icon="@drawable/ic_baseline_person"
+        android:title="User"/>
+    <item
+        android:id="@+id/action_job"
+        android:enabled="true"
+        android:icon="@drawable/ic_baseline_work"
+        android:title="Job"/>
+    <item
+        android:id="@+id/action_rank"
+        android:enabled="true"
+        android:icon="@drawable/ic_baseline_emoji_events"
+        android:title="Rank"/>
+</menu>

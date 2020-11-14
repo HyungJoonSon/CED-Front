@@ -13,7 +13,7 @@
         android:theme="@style/Theme.CED"
         android:usesCleartextTraffic="true">
         <activity android:name=".activity.LoginActivity"></activity>
-        <activity android:name=".activity.JoinActivity" />
+        <activity android:name=".activity.JoinActivity"></activity>
         <activity android:name=".activity.IntroActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

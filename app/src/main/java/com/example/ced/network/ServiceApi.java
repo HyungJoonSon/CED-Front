@@ -15,7 +15,7 @@ public interface ServiceApi {
     Call<CodeResponse> userJoin(@Body JoinRequest data);
 
     @GET("/user/checkID")
-    Call<CodeResponse> userCheckID(@Query("userId") String data);
+    Call<CodeResponse> userCheckID(@Query("UserID") String data);
 
     @GET("/user/checkName")
     Call<CodeResponse> userCheckName(@Query("UserName") String data);
