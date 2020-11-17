@@ -72,18 +72,18 @@
                 android:layout_width="300dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
-                android:background="#FFD8F56F"
                 android:text="로그인"
-                android:textColor="#FF000000" />
+                android:textColor="#FF000000"
+                android:background="@drawable/login_ripple" />
 
             <Button
                 android:id="@+id/join_btn"
                 android:layout_width="300dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
-                android:background="#FFD8F56F"
                 android:text="회원가입"
-                android:textColor="#FF000000" />
+                android:textColor="#FF000000"
+                android:background="@drawable/login_ripple" />
 
         </LinearLayout>
     </ScrollView>
