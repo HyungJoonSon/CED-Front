@@ -18,6 +18,7 @@ import android.widget.Toast;
 import com.example.ced.R;
 import com.example.ced.data.CodeResponse;
 import com.example.ced.data.LoginRequest;
+import com.example.ced.data.LoginResponse;
 import com.example.ced.network.RetrofitClient;
 import com.example.ced.network.ServiceApi;
 
@@ -137,14 +138,16 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     private void startLogin(LoginRequest data) {
-        service.userLogin(data).enqueue(new Callback<CodeResponse>() {
+        service.userLogin(data).enqueue(new Callback<LoginResponse>() {
 
             @Override
-            public void onResponse(Call<CodeResponse> call, Response<CodeResponse> response) {
-                CodeResponse code = response.body();
-                if(code.getCode() == 200){
+            public void onResponse(Call<LoginResponse> call, Response<LoginResponse> response) {
+                LoginResponse user = response.body();
+                if(user.getCode() == 200){
                     Toast.makeText(LoginActivity.this, "로그인에 성공했습니다.", Toast.LENGTH_SHORT).show();
                     Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+                    intent.putExtra("UserID",id);
+                    intent.putExtra("UserName",user.getUserName());
                     startActivity(intent); //다음화면으로 넘어감
                     finish();
                 }
@@ -154,7 +157,7 @@ public class LoginActivity extends AppCompatActivity {
             }
 
             @Override
-            public void onFailure(Call<CodeResponse> call, Throwable t) {
+            public void onFailure(Call<LoginResponse> call, Throwable t) {
                 Toast.makeText(LoginActivity.this, "로그인 에러 발생", Toast.LENGTH_SHORT).show();
                 Log.e("로그인 에러 발생", t.getMessage());
                 login_progressbar.setVisibility(View.INVISIBLE);

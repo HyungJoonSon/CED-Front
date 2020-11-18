@@ -3,6 +3,7 @@ package com.example.ced.network;
 import com.example.ced.data.JoinRequest;
 import com.example.ced.data.CodeResponse;
 import com.example.ced.data.LoginRequest;
+import com.example.ced.data.LoginResponse;
 
 import retrofit2.Call;
 import retrofit2.http.Body;
@@ -21,5 +22,5 @@ public interface ServiceApi {
     Call<CodeResponse> userCheckName(@Query("UserName") String data);
 
     @POST("/user/login")
-    Call<CodeResponse> userLogin(@Body LoginRequest data);
+    Call<LoginResponse> userLogin(@Body LoginRequest data);
 }
