@@ -98,8 +98,16 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+    @Override
+    protected void onPause() {
+        super.onPause();
+        finish();
+    }
+
     public void loadSaying() {
+        Random random = new Random();
         String json = null;
+
         try {
             InputStream is = getResources().getAssets().open("famousSaying.json");
 
@@ -116,8 +124,8 @@ public class MainActivity extends AppCompatActivity {
 
         JsonParser Parser = new JsonParser();
         JsonObject jsonObject = (JsonObject) Parser.parse(json);
-        JsonArray array = (JsonArray)jsonObject.get("list");
-        Random random = new Random();
+        JsonArray array = (JsonArray) jsonObject.get("list");
+
         jsonObject = (JsonObject) array.get(random.nextInt(array.size()));
         famousName = jsonObject.get("name").getAsString();
         famousSaying = jsonObject.get("saying").getAsString();

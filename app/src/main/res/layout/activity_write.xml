@@ -7,20 +7,21 @@
     tools:context=".activity.WriteActivity">
 
     <LinearLayout
+        android:id="@+id/writetop"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:paddingTop="10dp"
-        android:paddingBottom="10dp"
-        android:paddingLeft="15dp"
-        android:paddingRight="15dp"
         android:gravity="center_vertical"
         android:orientation="horizontal"
+        android:paddingLeft="15dp"
+        android:paddingTop="10dp"
+        android:paddingRight="15dp"
+        android:paddingBottom="10dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
         <ImageButton
-            android:id="@+id/writeaddbtn"
+            android:id="@+id/writebackbtn"
             android:layout_width="40dp"
             android:layout_height="40dp"
             android:background="@drawable/setting_ripple"
@@ -32,13 +33,65 @@
             android:layout_height="0dp" />
 
         <Button
-            android:id="@+id/writebackbtn"
+            android:id="@+id/writeaddbtn"
             android:layout_width="100dp"
             android:layout_height="60dp"
-            android:text="저장"
-            android:textSize="30dp"
+            android:background="@drawable/user_record_ripple"
             android:fontFamily="@font/nbgothic"
+            android:text="저장"
             android:textColor="@color/black"
-            android:background="@drawable/user_record_ripple"/>
+            android:textSize="30dp" />
     </LinearLayout>
+
+    <View
+        android:id="@+id/writeline"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="#a0a0a0"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/writetop" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="81dp"
+        android:paddingLeft="15dp"
+        android:paddingTop="10dp"
+        android:paddingRight="15dp"
+        android:paddingBottom="10dp"
+        app:layout_constraintTop_toBottomOf="@+id/writeline"
+        tools:layout_editor_absoluteX="-16dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center_horizontal"
+            android:orientation="vertical">
+
+            <EditText
+                android:id="@+id/writetitleview"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:background="@android:color/transparent"
+                android:fontFamily="@font/nbgothic"
+                android:gravity="center_vertical"
+                android:hint="제목"
+                android:textColor="@color/black"
+                android:textSize="28dp" />
+
+            <EditText
+                android:id="@+id/writecontentview"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="10dp"
+                android:background="@android:color/transparent"
+                android:fontFamily="@font/nbgothic"
+                android:gravity="center_horizontal|left"
+                android:hint="노트"
+                android:minHeight="200dp"
+                android:textColor="@color/black"
+                android:textSize="25dp" />
+        </LinearLayout>
+    </ScrollView>
 </androidx.constraintlayout.widget.ConstraintLayout>

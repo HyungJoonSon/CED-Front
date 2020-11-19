@@ -1,14 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".activity.RecordActivity"
-    android:orientation="vertical">
+    tools:context=".activity.RecordActivity">
 
     <LinearLayout
-        android:id="@+id/recordtop"
+        android:id="@+id/recorddatatop"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center_vertical"
@@ -22,58 +21,68 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <ImageButton
-            android:id="@+id/recordbackbtn"
+            android:id="@+id/recorddatabackbtn"
             android:layout_width="40dp"
             android:layout_height="40dp"
             android:background="@drawable/setting_ripple"
             android:outlineAmbientShadowColor="@color/black"
             android:src="@drawable/ic_baseline_arrow_back" />
-
-        <View
-            android:layout_width="5dp"
-            android:layout_height="0dp" />
-
-        <TextView
-            android:layout_width="150dp"
-            android:layout_height="wrap_content"
-            android:fontFamily="@font/bmhanna"
-            android:gravity="center_vertical"
-            android:text="기록지"
-            android:textColor="@color/black"
-            android:textSize="40dp" />
-
-        <View
-            android:layout_width="145dp"
-            android:layout_height="0dp" />
-
-        <ImageButton
-            android:id="@+id/recordaddbtn"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:background="@drawable/setting_ripple"
-            android:outlineAmbientShadowColor="@color/black"
-            android:src="@drawable/ic_baseline_add" />
     </LinearLayout>
 
     <View
-        android:layout_marginLeft="15dp"
-        android:layout_marginRight="15dp"
+        android:id="@+id/recordline"
         android:layout_width="match_parent"
         android:layout_height="1dp"
-        android:background="#a0a0a0"/>
+        android:background="#a0a0a0"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/recorddatatop" />
 
     <ScrollView
-        android:paddingTop="10dp"
-        android:paddingLeft="15dp"
-        android:paddingRight="15dp"
-        android:paddingBottom="10dp"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:fillViewport="true">
+        android:layout_marginTop="60dp"
+        android:paddingLeft="15dp"
+        android:paddingTop="10dp"
+        android:paddingRight="15dp"
+        android:paddingBottom="10dp"
+        app:layout_constraintTop_toBottomOf="@+id/recordline"
+        tools:layout_editor_absoluteX="0dp">
 
-        <ListView
-            android:id="@+id/recordlist"
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent" />
+            android:layout_height="60dp"
+            android:gravity="center_horizontal"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/recordtitleview"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:fontFamily="@font/nbgothic"
+                android:gravity="center_vertical"
+                android:textColor="@color/black"
+                android:textSize="30dp" />
+
+            <TextView
+                android:id="@+id/recordcontentview"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:fontFamily="@font/nbgothic"
+                android:gravity="center_vertical"
+                android:textColor="@color/black"
+                android:textSize="20dp" />
+
+            <TextView
+                android:id="@+id/recorddateview"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:fontFamily="@font/nbgothic"
+                android:gravity="center_vertical|right"
+                android:textColor="#666666"
+                android:textSize="12dp" />
+        </LinearLayout>
     </ScrollView>
-</LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

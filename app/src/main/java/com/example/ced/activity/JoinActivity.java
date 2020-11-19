@@ -26,6 +26,7 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class JoinActivity extends AppCompatActivity {
+
     private EditText join_id;
     private EditText join_pwd;
     private EditText join_name;
@@ -47,9 +48,6 @@ public class JoinActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_join);
-
-//        ActionBar actionbar = getSupportActionBar();
-//        actionbar.hide();
 
         service = RetrofitClient.getClient().create(ServiceApi.class);
 
@@ -81,7 +79,7 @@ public class JoinActivity extends AppCompatActivity {
             public void onTextChanged(CharSequence s, int start, int before, int count) {
                 String cor_id = s.toString();
 
-                if(cor_id.length() > 3)
+                if (cor_id.length() > 3)
                     check_id.setEnabled(true);
                 else
                     check_id.setEnabled(false);
@@ -101,7 +99,7 @@ public class JoinActivity extends AppCompatActivity {
             public void onTextChanged(CharSequence s, int start, int before, int count) {
                 String cor_name = s.toString();
 
-                if(cor_name.length() > 0)
+                if (cor_name.length() > 0)
                     check_name.setEnabled(true);
                 else
                     check_name.setEnabled(false);
@@ -118,7 +116,7 @@ public class JoinActivity extends AppCompatActivity {
             public void onClick(View v) {
                 join_progressbar.setVisibility(View.VISIBLE);
                 boolean noSpecial = join_id.getText().toString().matches("^[ㄱ-ㅎ가-힣a-zA-Z0-9]*$");
-                if(!noSpecial) {
+                if (!noSpecial) {
                     Toast.makeText(JoinActivity.this, "아이디에 특수문자가 들어갔습니다.", Toast.LENGTH_SHORT).show();
                     return;
                 }
@@ -129,7 +127,7 @@ public class JoinActivity extends AppCompatActivity {
 
                 input_id = true;
 
-                if(input_name)
+                if (input_name)
                     join_btn.setEnabled(true);
                 else
                     join_btn.setEnabled(false);
@@ -142,7 +140,7 @@ public class JoinActivity extends AppCompatActivity {
             public void onClick(View v) {
                 join_progressbar.setVisibility(View.VISIBLE);
                 boolean noSpecial = join_name.getText().toString().matches("^[ㄱ-ㅎ가-힣a-zA-Z0-9]*$");
-                if(!noSpecial) {
+                if (!noSpecial) {
                     Toast.makeText(JoinActivity.this, "이름에 특수문자가 들어갔습니다.", Toast.LENGTH_SHORT).show();
                     return;
                 }
@@ -153,7 +151,7 @@ public class JoinActivity extends AppCompatActivity {
 
                 input_name = true;
 
-                if(input_id)
+                if (input_id)
                     join_btn.setEnabled(true);
                 else
                     join_btn.setEnabled(false);
@@ -166,7 +164,7 @@ public class JoinActivity extends AppCompatActivity {
             public void onClick(View v) {
                 pwd = join_pwd.getText().toString();
 
-                if(pwd.length() < 8) {
+                if (pwd.length() < 8) {
                     Toast.makeText(JoinActivity.this, "비밀번호가 8자리 미만입니다.", Toast.LENGTH_SHORT).show();
                     return;
                 }
@@ -174,7 +172,6 @@ public class JoinActivity extends AppCompatActivity {
                 id = join_id.getText().toString();
                 name = join_name.getText().toString();
 
-                Toast.makeText(JoinActivity.this, name, Toast.LENGTH_SHORT).show();
                 // 테스트 구현 바람
                 join_progressbar.setVisibility(View.VISIBLE);
                 startJoin(new JoinRequest(id, pwd, name));
@@ -188,7 +185,7 @@ public class JoinActivity extends AppCompatActivity {
             public void onResponse(Call<CodeResponse> call, Response<CodeResponse> response) {
                 CodeResponse code = response.body();
                 join_progressbar.setVisibility(View.INVISIBLE);
-                if(code.getCode() == 200) {
+                if (code.getCode() == 200) {
                     Toast.makeText(JoinActivity.this, "회원가입에 성공하셨습니다.", Toast.LENGTH_SHORT).show();
                     finish();
                 }
@@ -210,13 +207,12 @@ public class JoinActivity extends AppCompatActivity {
                 CodeResponse code = response.body();
                 join_progressbar.setVisibility(View.INVISIBLE);
 
-                if(code.getCode() == 200) {
+                if (code.getCode() == 200) {
                     Toast.makeText(JoinActivity.this, "사용 가능한 아이디입니다.", Toast.LENGTH_SHORT).show();
                     join_id.setClickable(false);
                     join_id.setFocusable(false);
                     check_id.setEnabled(false);
-                }
-                else
+                } else
                     Toast.makeText(JoinActivity.this, "중복된 아이디가 존재합니다.", Toast.LENGTH_SHORT).show();
             }
 
@@ -236,13 +232,12 @@ public class JoinActivity extends AppCompatActivity {
                 CodeResponse code = response.body();
                 join_progressbar.setVisibility(View.INVISIBLE);
 
-                if(code.getCode() == 200) {
+                if (code.getCode() == 200) {
                     Toast.makeText(JoinActivity.this, "사용 가능한 이름입니다.", Toast.LENGTH_SHORT).show();
                     join_name.setClickable(false);
                     join_name.setFocusable(false);
                     check_name.setEnabled(false);
-                }
-                else {
+                } else {
                     Toast.makeText(JoinActivity.this, "중복된 이름이 존재합니다.", Toast.LENGTH_SHORT).show();
                 }
             }

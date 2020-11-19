@@ -27,6 +27,7 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class LoginActivity extends AppCompatActivity {
+
     private EditText login_id;
     private EditText login_pwd;
     private Button login_btn;
@@ -42,9 +43,6 @@ public class LoginActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
-
-//        ActionBar actionbar = getSupportActionBar();
-//        actionbar.hide();
 
         service = RetrofitClient.getClient().create(ServiceApi.class);
 
@@ -69,9 +67,9 @@ public class LoginActivity extends AppCompatActivity {
             public void onTextChanged(CharSequence s, int start, int before, int count) {
                 String cor_id = s.toString();
 
-                if(cor_id.length() > 0) {
+                if (cor_id.length() > 0) {
                     input_id = true;
-                    if(input_pwd)
+                    if (input_pwd)
                         login_btn.setEnabled(true);
                     else
                         login_btn.setEnabled(false);
@@ -95,9 +93,9 @@ public class LoginActivity extends AppCompatActivity {
             public void onTextChanged(CharSequence s, int start, int before, int count) {
                 String cor_pwd = s.toString();
 
-                if(cor_pwd.length() > 0) {
+                if (cor_pwd.length() > 0) {
                     input_pwd = true;
-                    if(input_id)
+                    if (input_id)
                         login_btn.setEnabled(true);
                     else
                         login_btn.setEnabled(false);
@@ -131,7 +129,7 @@ public class LoginActivity extends AppCompatActivity {
     private void tryLogin() {
         id = login_id.getText().toString();
         pwd = login_pwd.getText().toString();
-        
+
         // 테스트 구현 바람
         login_progressbar.setVisibility(View.VISIBLE);
         startLogin(new LoginRequest(id, pwd));
@@ -143,15 +141,14 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             public void onResponse(Call<LoginResponse> call, Response<LoginResponse> response) {
                 LoginResponse user = response.body();
-                if(user.getCode() == 200){
-                    Toast.makeText(LoginActivity.this, user.getUserName()+"님 환영합니다.", Toast.LENGTH_SHORT).show();
+                if (user.getCode() == 200) {
+                    Toast.makeText(LoginActivity.this, user.getUserName() + "님 환영합니다.", Toast.LENGTH_SHORT).show();
                     Intent intent = new Intent(getApplicationContext(), MainActivity.class);
-                    intent.putExtra("UserID",id);
-                    intent.putExtra("UserName",user.getUserName());
+                    intent.putExtra("UserID", id);
+                    intent.putExtra("UserName", user.getUserName());
                     startActivity(intent); //다음화면으로 넘어감
                     finish();
-                }
-                else if(user.getCode() == 204)
+                } else if (user.getCode() == 204)
                     Toast.makeText(LoginActivity.this, "존재하지 않는 아이디입니다.", Toast.LENGTH_SHORT).show();
                 else
                     Toast.makeText(LoginActivity.this, "비밀번호가 일치하지 않습니다.", Toast.LENGTH_SHORT).show();

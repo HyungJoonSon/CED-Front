@@ -9,6 +9,7 @@ import android.widget.ImageButton;
 import com.example.ced.R;
 
 public class SettingActivity extends AppCompatActivity {
+
     private ImageButton settingBackButton;
 
     @Override
@@ -25,5 +26,11 @@ public class SettingActivity extends AppCompatActivity {
                 finish();
             }
         });
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        finish();
     }
 }

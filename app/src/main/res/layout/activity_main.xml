@@ -6,28 +6,26 @@
     android:layout_height="match_parent"
     tools:context=".activity.MainActivity">
 
-
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottomnavibar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:menu="@menu/botton_memu"
         app:itemIconTint="@drawable/menu_selector_color"
         app:itemTextColor="@drawable/menu_selector_color"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-/>
+        app:menu="@menu/botton_memu" />
 
     <FrameLayout
         android:id="@+id/main_frame"
         android:layout_width="match_parent"
+        android:layout_height="match_parent"
         app:layout_constraintBottom_toTopOf="@+id/bottomnavibar"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="1.0"
-        android:layout_height="match_parent">
+        app:layout_constraintVertical_bias="1.0">
 
     </FrameLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

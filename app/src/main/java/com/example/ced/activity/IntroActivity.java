@@ -10,12 +10,11 @@ import android.os.Handler;
 import com.example.ced.R;
 
 public class IntroActivity extends AppCompatActivity {
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_intro); //xml , java 소스 연결
-//        ActionBar actionbar = getSupportActionBar();
-//        actionbar.hide();
+        setContentView(R.layout.activity_intro);        // xml, java 코드 연결
 
         Handler handler = new Handler();
         handler.postDelayed(new Runnable() {

@@ -9,12 +9,12 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:paddingTop="10dp"
-        android:paddingBottom="10dp"
-        android:paddingLeft="15dp"
-        android:paddingRight="15dp"
         android:gravity="center_vertical"
         android:orientation="horizontal"
+        android:paddingLeft="15dp"
+        android:paddingTop="10dp"
+        android:paddingRight="15dp"
+        android:paddingBottom="10dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
@@ -26,6 +26,7 @@
             android:background="@drawable/setting_ripple"
             android:outlineAmbientShadowColor="@color/black"
             android:src="@drawable/ic_baseline_arrow_back" />
+
         <View
             android:layout_width="5dp"
             android:layout_height="0dp" />

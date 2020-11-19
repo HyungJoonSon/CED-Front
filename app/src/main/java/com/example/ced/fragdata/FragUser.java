@@ -8,19 +8,17 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import com.example.ced.R;
-import com.example.ced.activity.LoginActivity;
-import com.example.ced.activity.MainActivity;
-import com.example.ced.activity.RecordActivity;
+import com.example.ced.activity.RecordListActivity;
 import com.example.ced.activity.SettingActivity;
 
 public class FragUser extends Fragment {
+
     private View view;
     private TextView userName;
     private TextView famousSaying;
@@ -55,7 +53,8 @@ public class FragUser extends Fragment {
         recordButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getActivity(), RecordActivity.class);
+                Intent intent = new Intent(getActivity(), RecordListActivity.class);
+                intent.putExtra("UserID",getArguments().getString("UserID"));
                 startActivity(intent); //다음화면으로 넘어감
             }
         });

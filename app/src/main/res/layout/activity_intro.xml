@@ -12,24 +12,24 @@
         android:layout_height="wrap_content"
         android:scaleType="fitXY"
         android:src="@drawable/intro"
-        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent"/>
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:layout_width="350dp"
         android:layout_height="100dp"
+        android:layout_gravity="center"
         android:autoSizeTextType="uniform"
+        android:fontFamily="@font/bmhanna"
+        android:gravity="center"
         android:text="CoStudy"
         android:textColor="@color/black"
-        android:gravity="center"
-        android:layout_gravity="center"
-        android:fontFamily="@font/bmhanna"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent"/>
+        app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
