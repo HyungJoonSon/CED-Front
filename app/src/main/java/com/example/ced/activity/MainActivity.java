@@ -98,12 +98,6 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    @Override
-    protected void onPause() {
-        super.onPause();
-        finish();
-    }
-
     public void loadSaying() {
         Random random = new Random();
         String json = null;

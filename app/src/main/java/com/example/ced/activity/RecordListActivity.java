@@ -72,12 +72,6 @@ public class RecordListActivity extends AppCompatActivity implements AdapterView
         recordlist.setOnItemClickListener(this);
     }
 
-    @Override
-    protected void onPause() {
-        super.onPause();
-        finish();
-    }
-
     public List<Record> loadRecord() {
         List<Record> record = new ArrayList<Record>();
         FileInputStream fileInputStream = null;

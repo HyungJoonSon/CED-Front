@@ -22,15 +22,8 @@ public class SettingActivity extends AppCompatActivity {
         settingBackButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
                 finish();
             }
         });
-    }
-
-    @Override
-    protected void onPause() {
-        super.onPause();
-        finish();
     }
 }
