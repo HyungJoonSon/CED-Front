@@ -4,6 +4,7 @@ import com.example.ced.data.JoinRequest;
 import com.example.ced.data.CodeResponse;
 import com.example.ced.data.LoginRequest;
 import com.example.ced.data.LoginResponse;
+import com.example.ced.data.RankResponse;
 
 import retrofit2.Call;
 import retrofit2.http.Body;
@@ -12,6 +13,9 @@ import retrofit2.http.POST;
 import retrofit2.http.Query;
 
 public interface ServiceApi {
+    @POST("/user/login")
+    Call<LoginResponse> userLogin(@Body LoginRequest data);
+
     @POST("/user/join")
     Call<CodeResponse> userJoin(@Body JoinRequest data);
 
@@ -21,6 +25,6 @@ public interface ServiceApi {
     @GET("/user/checkName")
     Call<CodeResponse> userCheckName(@Query("UserName") String data);
 
-    @POST("/user/login")
-    Call<LoginResponse> userLogin(@Body LoginRequest data);
+    @GET("/challenge/ranking")
+    Call<RankResponse> getRank();
 }
