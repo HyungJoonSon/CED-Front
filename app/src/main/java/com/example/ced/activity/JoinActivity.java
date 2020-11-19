@@ -196,8 +196,8 @@ public class JoinActivity extends AppCompatActivity {
 
             @Override
             public void onFailure(Call<CodeResponse> call, Throwable t) {
-                Toast.makeText(JoinActivity.this, "회원가입 오류 발생", Toast.LENGTH_SHORT).show();
-                Log.e("회원가입 오류 발생", t.getMessage());
+                Toast.makeText(JoinActivity.this, "통신 오류 발생", Toast.LENGTH_SHORT).show();
+                Log.e("통신 오류 발생", t.getMessage());
                 join_progressbar.setVisibility(View.INVISIBLE);
             }
         });

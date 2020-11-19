@@ -144,22 +144,24 @@ public class LoginActivity extends AppCompatActivity {
             public void onResponse(Call<LoginResponse> call, Response<LoginResponse> response) {
                 LoginResponse user = response.body();
                 if(user.getCode() == 200){
-                    Toast.makeText(LoginActivity.this, "로그인에 성공했습니다.", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(LoginActivity.this, user.getUserName()+"님 환영합니다.", Toast.LENGTH_SHORT).show();
                     Intent intent = new Intent(getApplicationContext(), MainActivity.class);
                     intent.putExtra("UserID",id);
                     intent.putExtra("UserName",user.getUserName());
                     startActivity(intent); //다음화면으로 넘어감
                     finish();
                 }
+                else if(user.getCode() == 204)
+                    Toast.makeText(LoginActivity.this, "존재하지 않는 아이디입니다.", Toast.LENGTH_SHORT).show();
                 else
-                    Toast.makeText(LoginActivity.this, "로그인에 실패했습니다.", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(LoginActivity.this, "비밀번호가 일치하지 않습니다.", Toast.LENGTH_SHORT).show();
                 login_progressbar.setVisibility(View.INVISIBLE);
             }
 
             @Override
             public void onFailure(Call<LoginResponse> call, Throwable t) {
-                Toast.makeText(LoginActivity.this, "로그인 에러 발생", Toast.LENGTH_SHORT).show();
-                Log.e("로그인 에러 발생", t.getMessage());
+                Toast.makeText(LoginActivity.this, "통신 오류 발생", Toast.LENGTH_SHORT).show();
+                Log.e("통신 오류 발생", t.getMessage());
                 login_progressbar.setVisibility(View.INVISIBLE);
             }
         });

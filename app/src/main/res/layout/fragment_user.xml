@@ -137,19 +137,19 @@
                     android:textColor="@color/black"
                     android:textSize="20dp" />
             </LinearLayout>
-
-            <View
-                android:layout_marginTop="10dp"
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:background="#000000"/>
         </LinearLayout>
 
-
+        <View
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="#a0a0a0"/>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:paddingTop="10dp"
             android:paddingBottom="10dp"
             android:paddingLeft="15dp"
             android:paddingRight="15dp"
@@ -164,5 +164,13 @@
                 android:drawableTop="@drawable/ic_baseline_sticky_note"
                 android:background="@drawable/user_record_ripple" />
         </LinearLayout>
+
+        <View
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="#a0a0a0"/>
+
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
