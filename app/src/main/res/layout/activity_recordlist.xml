@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -56,25 +56,25 @@
     </LinearLayout>
 
     <View
+        android:id="@+id/view"
         android:layout_width="match_parent"
         android:layout_height="1dp"
-        android:layout_marginLeft="15dp"
-        android:layout_marginRight="15dp"
-        android:background="#a0a0a0" />
+        android:background="#a0a0a0"
+        app:layout_constraintBottom_toBottomOf="@+id/recordtop"
+        tools:layout_editor_absoluteX="15dp" />
 
-    <ScrollView
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recordlist"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:fillViewport="true"
+        android:layout_marginTop="64dp"
+        android:divider="@android:color/transparent"
+        android:scrollbars="vertical"
         android:paddingLeft="15dp"
         android:paddingTop="10dp"
         android:paddingRight="15dp"
-        android:paddingBottom="10dp">
-
-        <ListView
-            android:id="@+id/recordlist"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:divider="@android:color/transparent" />
-    </ScrollView>
-</LinearLayout>
+        android:paddingBottom="10dp"
+        android:clickable="true"
+        android:background="@drawable/user_record_ripple"
+        app:layout_constraintTop_toBottomOf="@+id/recordtop" />
+</androidx.constraintlayout.widget.ConstraintLayout>
