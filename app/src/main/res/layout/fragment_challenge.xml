@@ -1,8 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:layout_width="349dp"
+        android:layout_height="493dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="40dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginBottom="40dp"
+        app:layout_constraintBottom_toTopOf="@+id/rankbotton"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ranktop" />
 
     <LinearLayout
         android:id="@+id/ranktop"
@@ -14,6 +27,7 @@
         android:paddingTop="10dp"
         android:paddingRight="15dp"
         android:paddingBottom="10dp"
+        app:layout_constraintBottom_toTopOf="@+id/recyclerView"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
@@ -29,71 +43,17 @@
     </LinearLayout>
 
     <!-- 밑에 속성 중에서 layout_marginBottom 값을 올리면 위로 올라감
-     올려줄 때, 밑에 있는 LinearLayout의 layout_marginBottom도
+     올려줄 때, _marginBottom밑에 있는 LinearLayout의 layout도
      같은 값으로 올려줘야함(여기서 +10dp를 했으면 밑도 +10dp)-->
-    <TableLayout
-        android:id="@+id/tableLayout"
-        android:layout_width="0dp"
-        android:layout_height="match_parent"
-        android:layout_gravity="center"
-        android:layout_marginTop="65dp"
-        android:layout_marginBottom="80dp"
-        android:padding="15dp"
-        android:stretchColumns="1,2"
-        app:layout_constraintBottom_toTopOf="@+id/rankbotton"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/ranktop">
-
-        <TableRow
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginBottom="10dp"
-            android:gravity="center">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:background="#D5D5D5"
-                android:gravity="center_horizontal|center_vertical"
-                android:text="순위"
-                android:textColor="#000000"
-                android:textSize="20sp" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:background="#D5D5D5"
-                android:gravity="center"
-                android:text="아이디"
-                android:textColor="#000000"
-                android:textSize="20sp" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:background="#D5D5D5"
-                android:gravity="center"
-                android:text="공부 시간"
-                android:textColor="#000000"
-                android:textSize="20sp" />
-        </TableRow>
-
-        <TableRow
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
-
-        </TableRow>
-    </TableLayout>
 
     <!-- 밑에 속성 중에서 layout_marginBottom 값을 올리면 위로 올라감
      올려줄 때, 위에 있는 TableLayout의 layout_marginBottom도
      같은 값으로 올려줘야함(여기서 +10dp를 했으면 위도 +10dp)-->
+
     <LinearLayout
         android:id="@+id/rankbotton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="0dp"
         android:gravity="center_vertical"
         android:orientation="horizontal"
         android:paddingLeft="15dp"
@@ -109,6 +69,6 @@
             android:layout_height="60dp"
             android:background="@drawable/rank_stopwatch_ripple"
             android:text="시작버튼"
-            android:textColor="@color/black" />
+            android:textColor="@color/black"/>
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
