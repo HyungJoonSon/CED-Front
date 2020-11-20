@@ -37,7 +37,8 @@
                 android:autoSizeTextType="uniform"
                 android:fontFamily="@font/bmhanna"
                 android:gravity="center"
-                android:text="앱 이미지"
+                android:text="CoStudy"
+                android:textStyle="bold"
                 android:textAlignment="center"
                 android:textColor="@color/black" />
 

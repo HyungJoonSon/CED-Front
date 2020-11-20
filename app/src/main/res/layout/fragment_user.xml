@@ -160,7 +160,7 @@
                 android:id="@+id/recordbtn"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@drawable/user_record_ripple"
+                android:background="@drawable/rank_stopwatch_ripple"
                 android:drawableTop="@drawable/ic_baseline_sticky_note"
                 android:text="기록지"
                 android:textColor="@color/black" />
