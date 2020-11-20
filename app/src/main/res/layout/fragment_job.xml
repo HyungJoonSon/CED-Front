@@ -2,19 +2,293 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent" />
 
     <TextView
-        android:layout_width="wrap_content"
+        android:id="@+id/text_home"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="직업 선택 화면"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:text="MBTI"
+        android:textAlignment="center"
+        android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.068" />
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="372dp"
+        app:layout_constraintBottom_toBottomOf="@+id/button_ESTJ"
+        app:layout_constraintTop_toBottomOf="@+id/button_ESTJ"
+        tools:context="직업 선택 메인화면, mbti버튼">
+
+
+        <Button
+            android:id="@+id/button_ISTJ"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginEnd="2dp"
+            android:background="@drawable/user_record_ripple"
+            android:text="ISTJ"
+            android:textColor="@color/black"
+            app:layout_constraintBaseline_toBaselineOf="@+id/button_ISFJ"
+            app:layout_constraintEnd_toStartOf="@+id/button_ISFJ"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <Button
+            android:id="@+id/button_ISFJ"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/user_record_ripple"
+            android:text="ISFJ"
+            android:textColor="@color/black"
+            app:layout_constraintBaseline_toBaselineOf="@+id/button_INFJ"
+            app:layout_constraintEnd_toStartOf="@+id/button_INFJ"
+            app:layout_constraintStart_toEndOf="@+id/button_ISTJ" />
+
+        <Button
+            android:id="@+id/button_INFJ"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="99dp"
+            android:layout_marginEnd="1dp"
+            android:background="@drawable/user_record_ripple"
+            android:text="INFJ"
+            android:textColor="@color/black"
+            app:layout_constraintEnd_toStartOf="@+id/button_INTJ"
+            app:layout_constraintStart_toEndOf="@+id/button_ISFJ"
+            app:layout_constraintTop_toTopOf="parent" />
+
+
+        <Button
+            android:id="@+id/button_INTJ"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            android:background="@drawable/user_record_ripple"
+            android:text="INTJ"
+            android:textColor="@color/black"
+            app:layout_constraintBaseline_toBaselineOf="@+id/button_INFJ"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/button_INFJ" />
+
+
+        <Button
+            android:id="@+id/button_ISTP"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="7dp"
+            android:layout_marginEnd="2dp"
+            android:background="@drawable/user_record_ripple"
+            android:text="ISTP"
+            android:textColor="@color/black"
+            app:layout_constraintEnd_toStartOf="@+id/button_ISFP"
+            app:layout_constraintHorizontal_bias="0.625"
+            app:layout_constraintStart_toStartOf="parent"
+            tools:layout_editor_absoluteY="163dp" />
+
+        <Button
+            android:id="@+id/button_ISFP"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/user_record_ripple"
+            android:text="ISFP"
+            android:textColor="@color/black"
+            tools:layout_editor_absoluteX="113dp"
+            tools:layout_editor_absoluteY="164dp" />
+
+        <Button
+            android:id="@+id/button_INFP"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/user_record_ripple"
+            android:text="INFP"
+            android:textColor="@color/black"
+            app:layout_constraintEnd_toStartOf="@+id/button_INTP"
+            app:layout_constraintStart_toEndOf="@+id/button_ISFP"
+            tools:layout_editor_absoluteY="164dp" />
+
+        <Button
+            android:id="@+id/button_INTP"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/user_record_ripple"
+            android:text="INTP"
+            android:textColor="@color/black"
+            tools:layout_editor_absoluteX="307dp"
+            tools:layout_editor_absoluteY="163dp" />
+
+        <Button
+            android:id="@+id/button_ESTP"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="7dp"
+            android:background="@drawable/user_record_ripple"
+            android:text="ESTP"
+            android:textColor="@color/black"
+            app:layout_constraintEnd_toStartOf="@+id/button_ESFP"
+            app:layout_constraintStart_toStartOf="parent"
+            tools:layout_editor_absoluteY="236dp" />
+
+        <Button
+            android:id="@+id/button_ESFP"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/user_record_ripple"
+            android:text="ESFP"
+            android:textColor="@color/black"
+            tools:layout_editor_absoluteX="113dp"
+            tools:layout_editor_absoluteY="236dp" />
+
+        <Button
+            android:id="@+id/button_ENFP"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/user_record_ripple"
+            android:text="ENFP"
+            android:textColor="@color/black"
+            tools:layout_editor_absoluteX="210dp"
+            tools:layout_editor_absoluteY="236dp" />
+
+        <Button
+            android:id="@+id/button_ENTP"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="7dp"
+            android:background="@drawable/user_record_ripple"
+            android:text="ENTP"
+            android:textColor="@color/black"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.391"
+            app:layout_constraintStart_toEndOf="@+id/button_ENFP"
+            tools:layout_editor_absoluteY="236dp" />
+
+        <Button
+            android:id="@+id/button_ESTJ"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="6dp"
+            android:layout_marginEnd="1dp"
+            android:background="@drawable/user_record_ripple"
+            android:text="ESTJ"
+            android:textColor="@color/black"
+            app:layout_constraintEnd_toStartOf="@+id/button_ESFJ"
+            app:layout_constraintHorizontal_bias="0.611"
+            app:layout_constraintStart_toStartOf="parent"
+            tools:layout_editor_absoluteY="290dp" />
+
+        <Button
+            android:id="@+id/button_ESFJ"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/user_record_ripple"
+            android:text="ESFJ"
+            android:textColor="@color/black"
+            tools:layout_editor_absoluteX="113dp"
+            tools:layout_editor_absoluteY="290dp" />
+
+        <Button
+            android:id="@+id/button_ENFJ"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/user_record_ripple"
+            android:text="ENFJ"
+            android:textColor="@color/black"
+            app:layout_constraintEnd_toStartOf="@+id/button_ENTJ"
+            app:layout_constraintStart_toEndOf="@+id/button_ESFJ"
+            tools:layout_editor_absoluteY="290dp" />
+
+        <Button
+            android:id="@+id/button_ENTJ"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="ENTJ"
+            android:background="@drawable/user_record_ripple"
+            android:textColor="@color/black"
+            tools:layout_editor_absoluteX="307dp"
+            tools:layout_editor_absoluteY="290dp" />
+
+        <androidx.constraintlayout.widget.Barrier
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:barrierDirection="top"
+            tools:layout_editor_absoluteX="204dp"
+            tools:layout_editor_absoluteY="216dp" />
+
+        <androidx.constraintlayout.widget.Barrier
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:barrierDirection="left"
+            tools:layout_editor_absoluteX="203dp"
+            tools:layout_editor_absoluteY="216dp" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="597dp"
+        app:layout_constraintBottom_toBottomOf="@+id/button_information"
+        app:layout_constraintTop_toBottomOf="@+id/button_interview"
+        tools:context="직업 선택 메인화면, mbti버튼">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="165dp"
+            android:orientation="vertical"
+            tools:layout_editor_absoluteX="2dp"
+            tools:layout_editor_absoluteY="400dp">
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <Button
+                android:id="@+id/button_interview"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+
+                android:background="@drawable/user_record_ripple"
+                android:text="직업정보"
+                android:textColor="@color/black" />
+
+            <Button
+                android:id="@+id/button_information"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:background="@drawable/user_record_ripple"
+                android:text="직업인 인터뷰"
+                android:textColor="@color/black" />
+        </LinearLayout>
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout><![CDATA[
+
+
+
+
+
+        />
+
+
+
+    ]]>
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
