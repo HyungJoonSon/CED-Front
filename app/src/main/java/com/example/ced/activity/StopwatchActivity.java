@@ -117,5 +117,4 @@ public class StopwatchActivity extends Activity{
         String easy_outTime=String.format("%02d:%02d:%02d", outTime/1000/60, (outTime/1000)%60, (outTime%1000)/10);
         return easy_outTime;
     }
-
 }

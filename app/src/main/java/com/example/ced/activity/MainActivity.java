@@ -1,5 +1,6 @@
 package com.example.ced.activity;
 
+import android.app.Person;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
@@ -20,6 +21,8 @@ import com.google.gson.JsonParser;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.lang.reflect.Array;
+import java.util.ArrayList;
 import java.util.Random;
 
 public class MainActivity extends AppCompatActivity {
@@ -35,6 +38,9 @@ public class MainActivity extends AppCompatActivity {
     private String UserName;
     private String famousName;
     private String famousSaying;
+
+    //ArrayList<Person> personList = new ArrayList<Person>();
+
 
 
     @Override

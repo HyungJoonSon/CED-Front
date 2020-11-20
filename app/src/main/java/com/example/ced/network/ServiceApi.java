@@ -27,6 +27,7 @@ public interface ServiceApi {
     @GET("/user/checkName")
     Call<CodeResponse> userCheckName(@Query("UserName") String data);
 
+    // 두개 사용
     @GET("/challenge/ranking")
     Call<RankResponse> getRank();
 

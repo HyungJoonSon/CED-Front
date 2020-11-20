@@ -12,12 +12,12 @@ public class RetrofitClient {
 
     public static Retrofit getClient() {
         if (retrofit == null) {
-            retrofit = new Retrofit.Builder()
-                    .baseUrl(BASE_URL)
-                    .addConverterFactory(GsonConverterFactory.create())
-                    .build();
+            retrofit = new Retrofit.Builder()   // 길 만듦
+                    .baseUrl(BASE_URL)  // 목적지
+                    .addConverterFactory(GsonConverterFactory.create()) // 형태
+                    .build();   // 시작
         }
 
-        return retrofit;
+        return retrofit;    // 길 리턴
     }
 }
