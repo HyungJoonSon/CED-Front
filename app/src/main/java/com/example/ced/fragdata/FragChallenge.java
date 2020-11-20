@@ -11,13 +11,13 @@ import androidx.fragment.app.Fragment;
 
 import com.example.ced.R;
 
-public class FragRank extends Fragment {
+public class FragChallenge extends Fragment {
     private View view;
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        view = inflater.inflate(R.layout.fragment_rank, container, false);
+        view = inflater.inflate(R.layout.fragment_challenge, container, false);
         return view;
     }
 }

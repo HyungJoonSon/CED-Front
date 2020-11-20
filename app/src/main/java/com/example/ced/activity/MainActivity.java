@@ -11,7 +11,7 @@ import androidx.fragment.app.FragmentTransaction;
 
 import com.example.ced.R;
 import com.example.ced.fragdata.FragJob;
-import com.example.ced.fragdata.FragRank;
+import com.example.ced.fragdata.FragChallenge;
 import com.example.ced.fragdata.FragUser;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.gson.JsonArray;
@@ -29,7 +29,7 @@ public class MainActivity extends AppCompatActivity {
     private FragmentTransaction fragmenttransaction;
     private FragUser fraguser;
     private FragJob fragjob;
-    private FragRank fragrank;
+    private FragChallenge fragrank;
     private Intent intent;
     private String UserID;
     private String UserName;
@@ -63,7 +63,7 @@ public class MainActivity extends AppCompatActivity {
         });
         fragjob = new FragJob();
         fraguser = new FragUser();
-        fragrank = new FragRank();
+        fragrank = new FragChallenge();
 
         intent = getIntent();
         Bundle bundle = new Bundle();
