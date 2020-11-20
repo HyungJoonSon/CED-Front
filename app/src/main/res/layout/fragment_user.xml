@@ -162,6 +162,7 @@
                 android:layout_height="wrap_content"
                 android:background="@drawable/rank_stopwatch_ripple"
                 android:drawableTop="@drawable/ic_baseline_sticky_note"
+                android:stateListAnimator="@null"
                 android:text="기록지"
                 android:textColor="@color/black" />
         </LinearLayout>

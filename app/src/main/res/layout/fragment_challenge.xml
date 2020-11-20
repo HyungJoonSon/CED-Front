@@ -110,6 +110,7 @@
             android:layout_width="match_parent"
             android:layout_height="60dp"
             android:background="@drawable/rank_stopwatch_ripple"
+            android:stateListAnimator="@null"
             android:text="시작버튼"
             android:textColor="@color/black" />
     </LinearLayout>
