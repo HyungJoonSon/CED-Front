@@ -14,5 +14,5 @@
         android:id="@+id/action_rank"
         android:enabled="true"
         android:icon="@drawable/ic_baseline_emoji_events"
-        android:title="Rank"/>
+        android:title="Challenge"/>
 </menu>
