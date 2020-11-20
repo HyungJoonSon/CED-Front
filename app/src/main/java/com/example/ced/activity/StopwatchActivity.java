@@ -1,4 +1,6 @@
 package com.example.ced.activity;
 
-public class StopwatchActivity {
+import androidx.appcompat.app.AppCompatActivity;
+
+public class StopwatchActivity extends AppCompatActivity {
 }
