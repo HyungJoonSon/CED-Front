@@ -1,6 +1,5 @@
 package com.example.ced.activity;
 
-import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
@@ -18,8 +17,6 @@ import com.example.ced.data.CodeResponse;
 import com.example.ced.data.JoinRequest;
 import com.example.ced.network.RetrofitClient;
 import com.example.ced.network.ServiceApi;
-
-import org.w3c.dom.Text;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -47,9 +44,9 @@ public class JoinActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_join);
+        setContentView(R.layout.activity_join);                         // xml, java 연결
 
-        service = RetrofitClient.getClient().create(ServiceApi.class);
+        service = RetrofitClient.getClient().create(ServiceApi.class);  // 통신을 위한 ServiceApi 생성
 
         join_id = findViewById(R.id.join_id);
         join_pwd = findViewById(R.id.join_pwd);
@@ -58,19 +55,19 @@ public class JoinActivity extends AppCompatActivity {
         join_btn = findViewById(R.id.join_resigter);
         check_id = findViewById(R.id.check_id);
         check_name = findViewById(R.id.check_name);
-        join_progressbar = findViewById(R.id.join_pbar);
+        join_progressbar = findViewById(R.id.join_pbar);                // xml의 컴포넌트와 각각 연결
 
         input_id = false;
         input_pwd = false;
         input_name = false;
         noNest_id = 0;
-        noNest_name = 0;
+        noNest_name = 0;                                                // EditText에 문자가 있는지, 중복되는지 확인하는 변수 초기화
 
         join_btn.setEnabled(false);
         check_id.setEnabled(false);
-        check_name.setEnabled(false);
+        check_name.setEnabled(false);                                   // 버튼 비활성화
 
-        join_id.addTextChangedListener(new TextWatcher() {
+        join_id.addTextChangedListener(new TextWatcher() {              // login 액티비티에서 설명했으므로 요약 설명
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
             }
@@ -83,14 +80,14 @@ public class JoinActivity extends AppCompatActivity {
                     check_id.setEnabled(true);
                 else
                     check_id.setEnabled(false);
-            }
+            }                                                           // 아이디가 4글자 이상일 때 버튼 활성화
 
             @Override
             public void afterTextChanged(Editable s) {
             }
         });
 
-        join_name.addTextChangedListener(new TextWatcher() {
+        join_name.addTextChangedListener(new TextWatcher() {            // login 액티비티에서 설명했으므로 요약 설명
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
             }
@@ -103,7 +100,7 @@ public class JoinActivity extends AppCompatActivity {
                     check_name.setEnabled(true);
                 else
                     check_name.setEnabled(false);
-            }
+            }                                                           // 이름이 1글자 이상일 때 버튼 활성화
 
             @Override
             public void afterTextChanged(Editable s) {
@@ -111,10 +108,10 @@ public class JoinActivity extends AppCompatActivity {
         });
 
         // 아이디 검사 버튼
-        check_id.setOnClickListener(new View.OnClickListener() {
+        check_id.setOnClickListener(new View.OnClickListener() {        // 버튼을 클릭 했을 때 모션을 정의
             @Override
             public void onClick(View v) {
-                join_progressbar.setVisibility(View.VISIBLE);
+                join_progressbar.setVisibility(View.VISIBLE);           // progressbar를 활성화 하고 특수문자 확인
                 boolean noSpecial = join_id.getText().toString().matches("^[ㄱ-ㅎ가-힣a-zA-Z0-9]*$");
                 if (!noSpecial) {
                     Toast.makeText(JoinActivity.this, "아이디에 특수문자가 들어갔습니다.", Toast.LENGTH_SHORT).show();
@@ -125,12 +122,18 @@ public class JoinActivity extends AppCompatActivity {
                 checkID(join_id.getText().toString());
                 // 인터넷 연결 검사, 중복 검사
 
-                input_id = true;
+                if (noNest_id <= 2) {
+                    noNest_id = 0;
+                    return;
+                }        // 중복되거나 인터넷이 연결되어 있지 않다면 밑의 작업을 안함
 
-                if (input_name)
-                    join_btn.setEnabled(true);
-                else
-                    join_btn.setEnabled(false);
+                input_id = true;
+                // 둘 다 올바를 때 input_id를 true로 초기화
+
+                if (input_name)                     // 만약 input_name도 true라면
+                    join_btn.setEnabled(true);      // 회원가입 버튼 활성화
+                else                                // false라면
+                    join_btn.setEnabled(false);     // 회원가입 버튼 비활성화
             }
         });
 
@@ -138,7 +141,7 @@ public class JoinActivity extends AppCompatActivity {
         check_name.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                join_progressbar.setVisibility(View.VISIBLE);
+                join_progressbar.setVisibility(View.VISIBLE);           // progressbar를 활성화 하고 특수문자 확인
                 boolean noSpecial = join_name.getText().toString().matches("^[ㄱ-ㅎ가-힣a-zA-Z0-9]*$");
                 if (!noSpecial) {
                     Toast.makeText(JoinActivity.this, "이름에 특수문자가 들어갔습니다.", Toast.LENGTH_SHORT).show();
@@ -149,12 +152,18 @@ public class JoinActivity extends AppCompatActivity {
                 checkName(join_name.getText().toString());
                 // 인터넷 연결 검사, 중복 검사
 
-                input_name = true;
+                if (noNest_name <= 2) {
+                    noNest_name = 0;
+                    return;
+                }        // 중복되거나 인터넷이 연결되어 있지 않다면 밑의 작업을 안함
 
-                if (input_id)
-                    join_btn.setEnabled(true);
-                else
-                    join_btn.setEnabled(false);
+                input_name = true;
+                // 둘 다 올바를 때 input_name를 true로 초기화
+
+                if (input_id)                   // 만약 input_id도 true라면
+                    join_btn.setEnabled(true);  // 회원가입 버튼 활성화
+                else                            // false라면
+                    join_btn.setEnabled(false); // 회원가입 버튼 비활성화
             }
         });
 
@@ -162,32 +171,31 @@ public class JoinActivity extends AppCompatActivity {
         join_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                pwd = join_pwd.getText().toString();
+                pwd = join_pwd.getText().toString();            // 비밀번호를 변수에 넣어주고
 
                 if (pwd.length() < 8) {
                     Toast.makeText(JoinActivity.this, "비밀번호가 8자리 미만입니다.", Toast.LENGTH_SHORT).show();
                     return;
-                }
+                }                                               // 8자리 미만이라면 아무 작업을 안함
 
-                id = join_id.getText().toString();
-                name = join_name.getText().toString();
+                id = join_id.getText().toString();              // 8자리 이상일 때 id를 변수에 넣어줌
+                name = join_name.getText().toString();          // 8자리 이상일 때 name를 변수에 넣어줌
 
-                // 테스트 구현 바람
-                join_progressbar.setVisibility(View.VISIBLE);
-                startJoin(new JoinRequest(id, pwd, name));
+                join_progressbar.setVisibility(View.VISIBLE);   // progressbar를 활성화 해주고
+                startJoin(new JoinRequest(id, pwd, name));      // 회원가입통신 시작
             }
         });
     }
 
-    public void startJoin(JoinRequest data) {
+    public void startJoin(JoinRequest data) {                           // 회원가입을 하는 함수(이전에 톧신을 설명했으므로 요약함)
         service.userJoin(data).enqueue(new Callback<CodeResponse>() {
             @Override
             public void onResponse(Call<CodeResponse> call, Response<CodeResponse> response) {
-                CodeResponse code = response.body();
-                join_progressbar.setVisibility(View.INVISIBLE);
-                if (code.getCode() == 200) {
+                CodeResponse code = response.body();                    // 응답받은 body의 객체를 넣고 code에 따라 활동이 나뉨
+                join_progressbar.setVisibility(View.INVISIBLE);         // progressbar 비활성화
+                if (code.getCode() == 200) {                            // 회원가입 성공이라면
                     Toast.makeText(JoinActivity.this, "회원가입에 성공하셨습니다.", Toast.LENGTH_SHORT).show();
-                    finish();
+                    finish();                                           // 현 액티비티를 종료함
                 }
             }
 
@@ -195,25 +203,28 @@ public class JoinActivity extends AppCompatActivity {
             public void onFailure(Call<CodeResponse> call, Throwable t) {
                 Toast.makeText(JoinActivity.this, "통신 오류 발생", Toast.LENGTH_SHORT).show();
                 Log.e("통신 오류 발생", t.getMessage());
-                join_progressbar.setVisibility(View.INVISIBLE);
+                join_progressbar.setVisibility(View.INVISIBLE);         // 통신 오류 발생시 log 출력 후 progressbar 비활성화
             }
         });
     }
 
-    public void checkID(String checkId) {
+    public void checkID(String checkId) {                               // ID를 검사하는 함수(앞의 설명으로 요약함)
         service.userCheckID(checkId).enqueue(new Callback<CodeResponse>() {
             @Override
             public void onResponse(Call<CodeResponse> call, Response<CodeResponse> response) {
                 CodeResponse code = response.body();
-                join_progressbar.setVisibility(View.INVISIBLE);
+                join_progressbar.setVisibility(View.INVISIBLE);         // progressbar 비활성화
 
-                if (code.getCode() == 200) {
+                if (code.getCode() == 200) {                            // 중복이 없다면
                     Toast.makeText(JoinActivity.this, "사용 가능한 아이디입니다.", Toast.LENGTH_SHORT).show();
                     join_id.setClickable(false);
                     join_id.setFocusable(false);
                     check_id.setEnabled(false);
-                } else
+                    noNest_id = 3;                                      // 해당 edittext를 비활성화후 중복 변수 작업
+                } else {
                     Toast.makeText(JoinActivity.this, "중복된 아이디가 존재합니다.", Toast.LENGTH_SHORT).show();
+                    noNest_id = 2;                                      // 중복 변수 작업
+                }
             }
 
             @Override
@@ -221,24 +232,27 @@ public class JoinActivity extends AppCompatActivity {
                 Toast.makeText(JoinActivity.this, "아이디 검사 오류 발생", Toast.LENGTH_SHORT).show();
                 Log.e("아이디 검사 오류 발생", t.getMessage());
                 join_progressbar.setVisibility(View.INVISIBLE);
+                noNest_id = 1;                                          // 통신 오류 발생 시 중복 변수 작업
             }
         });
     }
 
-    public void checkName(String checkName) {
+    public void checkName(String checkName) {                           // Name를 검사하는 함수(앞의 설명으로 요약함)
         service.userCheckName(checkName).enqueue(new Callback<CodeResponse>() {
             @Override
             public void onResponse(Call<CodeResponse> call, Response<CodeResponse> response) {
                 CodeResponse code = response.body();
-                join_progressbar.setVisibility(View.INVISIBLE);
+                join_progressbar.setVisibility(View.INVISIBLE);         // progressbar 비활성화
 
-                if (code.getCode() == 200) {
+                if (code.getCode() == 200) {                            // 중복이 없다면
                     Toast.makeText(JoinActivity.this, "사용 가능한 이름입니다.", Toast.LENGTH_SHORT).show();
                     join_name.setClickable(false);
                     join_name.setFocusable(false);
                     check_name.setEnabled(false);
+                    noNest_name = 3;                                    // 해당 edittext를 비활성화후 중복 변수 작업
                 } else {
                     Toast.makeText(JoinActivity.this, "중복된 이름이 존재합니다.", Toast.LENGTH_SHORT).show();
+                    noNest_name = 2;                                    // 중복 변수 작업
                 }
             }
 
@@ -247,6 +261,7 @@ public class JoinActivity extends AppCompatActivity {
                 Toast.makeText(JoinActivity.this, "이름 검사 오류 발생", Toast.LENGTH_SHORT).show();
                 Log.e("이름 검사 오류 발생", t.getMessage());
                 join_progressbar.setVisibility(View.INVISIBLE);
+                noNest_name = 1;                                        // 통신 오류 발생 시 중복 변수 작업
             }
         });
     }

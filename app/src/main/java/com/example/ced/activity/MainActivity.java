@@ -39,10 +39,6 @@ public class MainActivity extends AppCompatActivity {
     private String famousName;
     private String famousSaying;
 
-    //ArrayList<Person> personList = new ArrayList<Person>();
-
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

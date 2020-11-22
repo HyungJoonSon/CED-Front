@@ -61,12 +61,13 @@ public class RecordAdapter extends RecyclerView.Adapter<RecordAdapter.ViewHolder
             this.recordTitle = view.findViewById(R.id.recordTitle);
             this.recordDate = view.findViewById(R.id.recordDate);
 
+            // 해당 뷰를 클릭 했을 때 일어나는 method
             view.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    int position = getAdapterPosition();
-                    if (position != RecyclerView.NO_POSITION)
-                        onItemClickListener.onItemClick(v, position);
+                    int position = getAdapterPosition();                // 해당 view의 position을 받음
+                    if (position != RecyclerView.NO_POSITION)           // 해당 position가 유효하다면
+                        onItemClickListener.onItemClick(v, position);   // item클릭 함수를 호출함(액티비티에서 정의)
                 }
             });
 
@@ -88,15 +89,15 @@ public class RecordAdapter extends RecyclerView.Adapter<RecordAdapter.ViewHolder
     // onCreateViewHolder() - 아이템 뷰를 위한 뷰홀더 객체 생성하여 리턴.
     public RecordAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.listview_record_item, parent, false);
-        RecordAdapter.ViewHolder viewHolder = new ViewHolder(view);
-        return viewHolder;
+        RecordAdapter.ViewHolder viewHolder = new ViewHolder(view);     // 해당 뷰를 만들어진 xml을 기반으로 구성하고 뷰홀더로 생성
+        return viewHolder;                                              // 뷰홀더 리턴
     }
 
     @Override
     // onBindViewHolder() - position에 해당하는 데이터를 뷰홀더의 아이템뷰에 표시.
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        holder.recordTitle.setText(list.get(position).getTitle());
-        holder.recordDate.setText(list.get(position).getDate());
+        holder.recordTitle.setText(list.get(position).getTitle());      // 뷰 홀더 내부의 아이템뷰 Title을 재정의
+        holder.recordDate.setText(list.get(position).getDate());        // 뷰 홀더 내부의 아이템뷰 Date을 재정의
     }
 
     @Override
@@ -105,18 +106,22 @@ public class RecordAdapter extends RecyclerView.Adapter<RecordAdapter.ViewHolder
         return list.size();
     }
 
+    // 해당 객체의 list 리턴
     public List<Record> getList() {
         return list;
     }
 
+    // 해당 position의 Record 리턴
     public Record getRecord(int position) {
         return list.get(position);
     }
 
+    // Record를 list에 추가함
     public void addRecord(Record record) {
         list.add(0, record);
     }
 
+    // 해당 postion의 Record 삭제
     public void removeRecord(int position) {
         list.remove(position);
     }

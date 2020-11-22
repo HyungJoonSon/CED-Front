@@ -29,36 +29,36 @@ public class FragUser extends Fragment {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        view = inflater.inflate(R.layout.fragment_user, container, false);
+        view = inflater.inflate(R.layout.fragment_user, container, false);                         // xml, java 연결
 
         userName = view.findViewById(R.id.fragusername);
         famousName = view.findViewById(R.id.fragfname);
         famousSaying = view.findViewById(R.id.fragfsaying);
         recordButton = view.findViewById(R.id.recordbtn);
-        settingButton = view.findViewById(R.id.settingbtn);
+        settingButton = view.findViewById(R.id.settingbtn);                                 // xml의 컴포넌트와 각각 연결
 
-        // 액티비티에서 아이디를 받아와서 출력
+        // 액티비티에서 닉네임, 명언, 명언을 사용한 사람의 이름를 받아와서 출력
         userName.setText(getArguments().getString("UserName") + "님");
         famousName.setText("- " + getArguments().getString("FamousName") + " -");
         famousSaying.setText(getArguments().getString("FamousSaying"));
 
-        settingButton.setOnClickListener(new View.OnClickListener() {
+        settingButton.setOnClickListener(new View.OnClickListener() {                       // setting 버튼
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getActivity(), SettingActivity.class);
-                startActivity(intent); //다음화면으로 넘어감
+                startActivity(intent);                                                      //다음화면으로 넘어감
             }
         });
 
-        recordButton.setOnClickListener(new View.OnClickListener() {
+        recordButton.setOnClickListener(new View.OnClickListener() {                        // record 버튼
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getActivity(), RecordListActivity.class);
                 intent.putExtra("UserID",getArguments().getString("UserID"));
-                startActivity(intent); //다음화면으로 넘어감
+                startActivity(intent);                                                      // 유저의 아이디와 함께 다음화면으로 넘어감
             }
         });
 
-        return view;
+        return view;                                                                        // 해당 뷰를 반환(해당 뷰는 Main 액티비티에서 사용됨)
     }
 }
