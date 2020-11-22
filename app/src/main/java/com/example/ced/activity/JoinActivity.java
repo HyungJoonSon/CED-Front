@@ -121,19 +121,6 @@ public class JoinActivity extends AppCompatActivity {
 
                 checkID(join_id.getText().toString());
                 // 인터넷 연결 검사, 중복 검사
-
-                if (noNest_id <= 2) {
-                    noNest_id = 0;
-                    return;
-                }        // 중복되거나 인터넷이 연결되어 있지 않다면 밑의 작업을 안함
-
-                input_id = true;
-                // 둘 다 올바를 때 input_id를 true로 초기화
-
-                if (input_name)                     // 만약 input_name도 true라면
-                    join_btn.setEnabled(true);      // 회원가입 버튼 활성화
-                else                                // false라면
-                    join_btn.setEnabled(false);     // 회원가입 버튼 비활성화
             }
         });
 
@@ -151,19 +138,6 @@ public class JoinActivity extends AppCompatActivity {
 
                 checkName(join_name.getText().toString());
                 // 인터넷 연결 검사, 중복 검사
-
-                if (noNest_name <= 2) {
-                    noNest_name = 0;
-                    return;
-                }        // 중복되거나 인터넷이 연결되어 있지 않다면 밑의 작업을 안함
-
-                input_name = true;
-                // 둘 다 올바를 때 input_name를 true로 초기화
-
-                if (input_id)                   // 만약 input_id도 true라면
-                    join_btn.setEnabled(true);  // 회원가입 버튼 활성화
-                else                            // false라면
-                    join_btn.setEnabled(false); // 회원가입 버튼 비활성화
             }
         });
 
@@ -218,12 +192,18 @@ public class JoinActivity extends AppCompatActivity {
                 if (code.getCode() == 200) {                            // 중복이 없다면
                     Toast.makeText(JoinActivity.this, "사용 가능한 아이디입니다.", Toast.LENGTH_SHORT).show();
                     join_id.setClickable(false);
-                    join_id.setFocusable(false);
-                    check_id.setEnabled(false);
-                    noNest_id = 3;                                      // 해당 edittext를 비활성화후 중복 변수 작업
+                    join_id.setFocusable(false);        // EditText 수정여부 비활성화
+                    check_id.setEnabled(false);         // Button 비활성화
+
+                    input_id = true;
+                    // 둘 다 올바를 때 input_id를 true로 초기화
+
+                    if (input_name)                     // 만약 input_name도 true라면
+                        join_btn.setEnabled(true);      // 회원가입 버튼 활성화
+                    else                                // false라면
+                        join_btn.setEnabled(false);     // 회원가입 버튼 비활성화
                 } else {
                     Toast.makeText(JoinActivity.this, "중복된 아이디가 존재합니다.", Toast.LENGTH_SHORT).show();
-                    noNest_id = 2;                                      // 중복 변수 작업
                 }
             }
 
@@ -232,7 +212,6 @@ public class JoinActivity extends AppCompatActivity {
                 Toast.makeText(JoinActivity.this, "아이디 검사 오류 발생", Toast.LENGTH_SHORT).show();
                 Log.e("아이디 검사 오류 발생", t.getMessage());
                 join_progressbar.setVisibility(View.INVISIBLE);
-                noNest_id = 1;                                          // 통신 오류 발생 시 중복 변수 작업
             }
         });
     }
@@ -247,12 +226,18 @@ public class JoinActivity extends AppCompatActivity {
                 if (code.getCode() == 200) {                            // 중복이 없다면
                     Toast.makeText(JoinActivity.this, "사용 가능한 이름입니다.", Toast.LENGTH_SHORT).show();
                     join_name.setClickable(false);
-                    join_name.setFocusable(false);
-                    check_name.setEnabled(false);
-                    noNest_name = 3;                                    // 해당 edittext를 비활성화후 중복 변수 작업
+                    join_name.setFocusable(false);        // EditText 수정여부 비활성화
+                    check_name.setEnabled(false);         // Button 비활성화
+
+                    input_name = true;
+                    // 둘 다 올바를 때 input_name를 true로 초기화
+
+                    if (input_id)                   // 만약 input_id도 true라면
+                        join_btn.setEnabled(true);  // 회원가입 버튼 활성화
+                    else                            // false라면
+                        join_btn.setEnabled(false); // 회원가입 버튼 비활성화
                 } else {
                     Toast.makeText(JoinActivity.this, "중복된 이름이 존재합니다.", Toast.LENGTH_SHORT).show();
-                    noNest_name = 2;                                    // 중복 변수 작업
                 }
             }
 
@@ -261,7 +246,6 @@ public class JoinActivity extends AppCompatActivity {
                 Toast.makeText(JoinActivity.this, "이름 검사 오류 발생", Toast.LENGTH_SHORT).show();
                 Log.e("이름 검사 오류 발생", t.getMessage());
                 join_progressbar.setVisibility(View.INVISIBLE);
-                noNest_name = 1;                                        // 통신 오류 발생 시 중복 변수 작업
             }
         });
     }
