@@ -11,7 +11,7 @@
         android:icon="@drawable/ic_baseline_work"
         android:title="Job"/>
     <item
-        android:id="@+id/action_rank"
+        android:id="@+id/action_challenge"
         android:enabled="true"
         android:icon="@drawable/ic_baseline_emoji_events"
         android:title="Challenge"/>
