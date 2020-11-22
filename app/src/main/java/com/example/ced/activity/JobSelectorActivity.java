@@ -3,10 +3,10 @@ package com.example.ced.activity;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
-import android.util.SparseBooleanArray;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ListView;
 
 import com.example.ced.R;
@@ -19,6 +19,8 @@ public class JobSelectorActivity extends AppCompatActivity {
     private List<String> items;
     private ArrayAdapter adapter;
     private ListView listview;
+    private ImageButton jobbackbnt;
+    private Button selectAllButton;
 
 
     @Override
@@ -26,6 +28,8 @@ public class JobSelectorActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         this.savedInstanceState = savedInstanceState;
         setContentView(R.layout.activity_job_selector);
+
+
 
         // listview 생성 및 adapter 지정.
         listview = (ListView) findViewById(R.id.listview_job);
@@ -77,14 +81,27 @@ public class JobSelectorActivity extends AppCompatActivity {
         adapter.notifyDataSetChanged();
 
         // 뒤로가기 버튼 만들기 finish();
+        jobbackbnt=(ImageButton)findViewById(R.id.jobbackbtn);
+        jobbackbnt.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
+
 
         // 완료 버튼 만들기
 
         // selectAll button에 대한 이벤트 처리.
-        Button selectAllButton = (Button) findViewById(R.id.selectAll);
+        selectAllButton = (Button) findViewById(R.id.selectAll);
         selectAllButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                int count =0;
+                count=adapter.getCount();
+                for(int i=0; i<count;i++){
+                    listview.setItemChecked(i,true);
+                }
 
             }
         });
