@@ -104,15 +104,10 @@ public class JobSelectorActivity extends AppCompatActivity {
                 int count = adapter.getCount();
                 for(int i =count -1;i>=0;i--){
                     if(checkedItems.get(i)){
-
-                        if(i==0){
-                            jobfieldbuffer.append(items.get(i)+",");
-                        }
-                        else{
-                            jobfieldbuffer.append(items.get(i));
-                        }
+                        jobfieldbuffer.append(items.get(i)+",");
                     }
                 }
+                jobfieldbuffer.deleteCharAt(jobfieldbuffer.lastIndexOf(","));
                 jobinfoIntent.putExtra("jobfield",jobfieldbuffer.toString());
                 startActivity(jobinfoIntent);
             }
