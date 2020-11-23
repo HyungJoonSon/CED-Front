@@ -13,26 +13,23 @@ import android.widget.ListView;
 
 import com.example.ced.R;
 
+import java.nio.Buffer;
 import java.util.ArrayList;
 import java.util.List;
 
 public class JobSelectorActivity extends AppCompatActivity {
-    private Bundle savedInstanceState;
     private List<String> items;
-    private ArrayAdapter adapter;
+    private ArrayAdapter<String> adapter;
     private ListView listview;
     private ImageButton jobbackbnt;
     private Button selectAllButton;
     private Button choicebtn;
-    private Intent jobinfoIntent;
     private SparseBooleanArray checkedItems;
-    private StringBuffer jobfieldbuffer;
-    private String startJob;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        this.savedInstanceState = savedInstanceState;
         setContentView(R.layout.activity_job_selector);
 
 
@@ -96,34 +93,31 @@ public class JobSelectorActivity extends AppCompatActivity {
 
 
         // 완료 버튼 만들기
-        jobinfoIntent = new Intent(JobSelectorActivity.this, JobInfoActivity.class);
-        Bundle infobunble = new Bundle();
+        Intent jobinfoIntent = new Intent(getApplicationContext(), JobInfoActivity.class);
         checkedItems = listview.getCheckedItemPositions();
         choicebtn = (Button) findViewById(R.id.choicebtn);
         choicebtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Intent jobinfoIntent=new Intent(getApplicationContext(),JobInfoActivity.class);
+                StringBuffer jobfieldbuffer = new StringBuffer();
                 int count = adapter.getCount();
-                for (int i = count - 1; i >= 0; i--) {
-                    if (checkedItems.get(i)) {
-                        jobfieldbuffer.append(items.get(i));
-                        if (i > 0) {
-                            jobfieldbuffer.append(",");
-                        }
-                        else {
+                for(int i =count -1;i>=0;i--){
+                    if(checkedItems.get(i)){
 
+                        if(i==0){
+                            jobfieldbuffer.append(items.get(i)+",");
+                        }
+                        else{
+                            jobfieldbuffer.append(items.get(i));
                         }
                     }
                 }
-                startJob = jobfieldbuffer.toString();
-                jobinfoIntent.putExtra("jobfield", startJob);
+                jobinfoIntent.putExtra("jobfield",jobfieldbuffer.toString());
                 startActivity(jobinfoIntent);
-
             }
         });
 
-
-        // selectAll button에 대한 이벤트 처리.
         selectAllButton = (Button) findViewById(R.id.selectAll);
         selectAllButton.setOnClickListener(new View.OnClickListener() {
             @Override
