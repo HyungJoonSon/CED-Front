@@ -17,7 +17,6 @@ public class RetrofitClient {
                     .addConverterFactory(GsonConverterFactory.create()) // 형태
                     .build();   // 시작
         }
-
         return retrofit;    // 길 리턴
     }
 }

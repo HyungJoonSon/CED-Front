@@ -78,9 +78,9 @@ public class FragChallenge extends Fragment {
         return view;
     }
 
-
+    /* DB에 시간 넣는 함수 */
     public void renewTime(RankRequest data) {
-        service.renewalRank(data).enqueue(new Callback<CodeResponse>() {
+        service.renewalRank(data).enqueue(new Callback<CodeResponse>() {    // renewalRank에 data 인큐
             @Override
             public void onResponse(Call<CodeResponse> call, Response<CodeResponse> response) {
                 CodeResponse code = response.body();
@@ -97,18 +97,19 @@ public class FragChallenge extends Fragment {
         });
     }
 
+    /* DB에서 리스트 불러오는 함수 */
     public void renewRank() {
         service.getRank().enqueue(new Callback<RankResponse>() {
             @Override
             public void onResponse(Call<RankResponse> call, Response<RankResponse> response) {
                 RankResponse user = response.body();
-                List<UserRank> result = user.getResult();
-                List<RankData> inputList = new ArrayList<RankData>();
+                List<UserRank> result = user.getResult();   // result에 값 넣기
+                List<RankData> inputList = new ArrayList<RankData>();   // inputList에 랭크 넣기
                 //리스트에 출력하기
                 for(int i = 0; i< result.size(); i++)
-                    inputList.add(new RankData(i+1, result.get(i).getUserid(), result.get(i).getWeekly()));
+                    inputList.add(new RankData(i+1, result.get(i).getUserid(), result.get(i).getWeekly())); // 순위, 아이디, 시간 리스트에 저장
 
-                adapter.setList(inputList);
+                adapter.setList(inputList); // adapter의 setList함수로 inputList넘겨줌
             }
 
             @Override
@@ -119,7 +120,7 @@ public class FragChallenge extends Fragment {
         });
     }
 
-
+    /* 시간 int로 바꾸고 누적하는 함수 */
     public int changeTime(String time){
         int hour, min, sec, result;
 
@@ -148,5 +149,4 @@ public class FragChallenge extends Fragment {
         result = Integer.parseInt(tempHour+tempMin+tempSec);
         return result;
     }
-
 }

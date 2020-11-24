@@ -18,6 +18,7 @@ public class RankData {
     public int getTime() {
         return time;
     }
+
     public String getUserId() {
         return userId;
     }
