@@ -165,17 +165,17 @@ public class StopwatchActivity extends AppCompatActivity {
         String tempMin; // 두 
         if(min<10){ // 분이 일의자리 수 이면
             tempMin="0"+Integer.toString(min);  // 앞에 0 자리 붙여줌
-        }else if(min==0) {  // 0분이면
+        } else if(min==0) {  // 0분이면
             tempMin="00";   // 앞에 00 자리 붙여줌
-        }else{  // 분이 두 자리 수이면
+        } else{  // 분이 두 자리 수이면
             tempMin=Integer.toString(min);  // 그대로 string으로 변환하여 tempMin에 저장
         }
         String tempSec;
         if(sec<10){ // 초가 일의자리 수 이면
             tempSec="0"+Integer.toString(sec);  // 초 앞에 0 자리 붙여줌
-        }else if(sec==0) {
+        } else if(sec==0) {
             tempSec="00";
-        }else{
+        } else{
             tempSec=Integer.toString(sec);
         }
         result = Integer.parseInt(tempHour+tempMin+tempSec);    // 문자열들을 붙여 누적된 숫자로 변환

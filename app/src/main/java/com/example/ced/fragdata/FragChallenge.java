@@ -106,9 +106,10 @@ public class FragChallenge extends Fragment {
                 List<UserRank> result = user.getResult();   // result에 값 넣기
                 List<RankData> inputList = new ArrayList<RankData>();   // inputList에 랭크 넣기
                 //리스트에 출력하기
-                for(int i = 0; i< result.size(); i++)
-                    inputList.add(new RankData(i+1, result.get(i).getUserid(), result.get(i).getWeekly())); // 순위, 아이디, 시간 리스트에 저장
-
+                for(int i = 0; i< result.size(); i++) {
+                    inputList.add(new RankData(i + 1, result.get(i).getUserid(), result.get(i).getWeekly())); // 순위, 아이디, 시간 리스트에 저장
+                    int t = result.get(i).getWeekly() - (result.get(i).getWeekly()/100)*100;    // DB값 초로 나누기
+                }
                 adapter.setList(inputList); // adapter의 setList함수로 inputList넘겨줌
             }
 
