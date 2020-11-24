@@ -10,6 +10,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import com.example.ced.R;
 
@@ -92,31 +93,46 @@ public class JobSelectorActivity extends AppCompatActivity {
 
         choicebtn.setOnClickListener(new View.OnClickListener() {               // 완료 버튼
             @Override
-            public void onClick(View v) {
+            public void onClick(View v) {                                       // check한 list의 정보를 boolean List로 받음
+                boolean trueCheckList = false;
                 SparseBooleanArray checkedItems = listview.getCheckedItemPositions();
-                StringBuffer jobfieldbuffer = new StringBuffer();
 
-                for (int i = 0; i < items.size(); i++) {
-                    if (checkedItems.get(i)) {
+                for (int i = 0; i < items.size(); i++) {                        // 체크가 없는지 있는지 확인하는 반복
+                    if (checkedItems.get(i)) {                                  // 체크가 한번이라도 되었다면
+                        trueCheckList = true;                                   // boolean 값을 바꿔주고
+                        break;                                                  // 반복을 멈춤
+                    }
+                }
+
+                if(!trueCheckList) {                                            // 싱글톤 패턴으로 선택된지 확인함(없다면 아무것도 안함)
+                    Toast.makeText(JobSelectorActivity.this, "선택된 항목이 없습니다.", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+
+                StringBuffer jobfieldbuffer = new StringBuffer();               // 통신 형식을 위한 StringBuffer
+
+                for (int i = 0; i < items.size(); i++) {                        // 통신 형식을 위한 문자열 변경 작업
+                    if (checkedItems.get(i)) {                                  // 체크한 항목만 buffer에 넣어줌
                         jobfieldbuffer.append(items.get(i) + ", ");
                     }
                 }
 
-                jobfieldbuffer.deleteCharAt(jobfieldbuffer.lastIndexOf(", "));
+                jobfieldbuffer.deleteCharAt(jobfieldbuffer.lastIndexOf(", "));  // 마지막에 ", "를 삭제해줌
+                                                                                // 위 과정을 거치면 정보는 "ㅁㄴㅇㄹ, ㅁㄴㅇㄹ, ㅁㄴㅇㄹ" 형식이 됨
 
                 Intent intent = new Intent(getApplicationContext(), JobInfoActivity.class);
-                intent.putExtra("jobSelect", jobfieldbuffer.toString());
-                startActivity(intent);
+                intent.putExtra("jobSelect", jobfieldbuffer.toString());  // 해당 자료를 넘겨줌
+                startActivity(intent);                                          // 다음 화면으로 넘어감
             }
         });
 
-        selectAllButton.setOnClickListener(new View.OnClickListener() {
+        selectAllButton.setOnClickListener(new View.OnClickListener() {         // select all 버튼
             @Override
-            public void onClick(View v) {
+            public void onClick(View v) {                                       // 모든 것을 check함
                 int count = 0;
-                count = adapter.getCount();
+                count = adapter.getCount();                                     // list의 크기만큼 반복한다.
                 for (int i = 0; i < count; i++) {
-                    listview.setItemChecked(i, true);
+                    listview.setItemChecked(i, true);                     // 해당 inde에 있는 list의 아이템 check
                 }
             }
         });
