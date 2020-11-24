@@ -54,180 +54,180 @@ public class FragJob extends Fragment {
         button_ISTJ = view.findViewById(R.id.button_ISTJ);
         button_ISFJ = view.findViewById(R.id.button_ISFJ);
         button_INFJ = view.findViewById(R.id.button_INFJ);
-        button_INTJ = view.findViewById(R.id.button_INTJ);
+        button_INTJ = view.findViewById(R.id.button_INTJ);                // xml의 컴포넌트와 연결
 
         button_ISTP = view.findViewById(R.id.button_ISTP);
         button_ISFP = view.findViewById(R.id.button_ISFP);
         button_INFP = view.findViewById(R.id.button_INFP);
-        button_INTP = view.findViewById(R.id.button_INTP);
+        button_INTP = view.findViewById(R.id.button_INTP);                // xml의 컴포넌트와 연결
 
         button_ESTP = view.findViewById(R.id.button_ESTP);
         button_ESFP = view.findViewById(R.id.button_ESFP);
         button_ENFP = view.findViewById(R.id.button_ENFP);
-        button_ENTP = view.findViewById(R.id.button_ENTP);
+        button_ENTP = view.findViewById(R.id.button_ENTP);                // xml의 컴포넌트와 연결
 
         button_ESTJ = view.findViewById(R.id.button_ESTJ);
         button_ESFJ = view.findViewById(R.id.button_ESFJ);
         button_ENFJ = view.findViewById(R.id.button_ENFJ);
-        button_ENTJ = view.findViewById(R.id.button_ENTJ);
-
-        jobDataBtn.setOnClickListener(new View.OnClickListener() {
+        button_ENTJ = view.findViewById(R.id.button_ENTJ);                // xml의 컴포넌트와 연결
+        
+        jobDataBtn.setOnClickListener(new View.OnClickListener() {              // 직업 정보 버튼 연결
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getActivity(), JobSelectorActivity.class);
-                startActivity(intent); //다음화면으로 넘어감
+                startActivity(intent);                                          // 해당하는 액티비티로 넘어감
             }
         });
 
-        jobInterVeiwBtn.setOnClickListener(new View.OnClickListener() {
+        jobInterVeiwBtn.setOnClickListener(new View.OnClickListener() {         // 직업 인터뷰 버튼 연결
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getActivity(), JobInterviewActivity.class);
-                startActivity(intent);
+                startActivity(intent);                                          // 해당하는 액티비티로 넘어감
             }
         });
 
-        button_ISTJ.setOnClickListener(new View.OnClickListener() {
+        button_ISTJ.setOnClickListener(new View.OnClickListener() {             // MBTI 버튼 연결
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getActivity(), MbtiActivity.class);
-                intent.putExtra("mbti", "ISTJ");
-                startActivity(intent);
+                intent.putExtra("mbti", "ISTJ");                    // 다음 액티비티에 전달할 MBTI 정보
+                startActivity(intent);                                          // 해당하는 액티비티로 넘어감
             }
         });
 
-        button_ISFJ.setOnClickListener(new View.OnClickListener() {
+        button_ISFJ.setOnClickListener(new View.OnClickListener() {             // MBTI 버튼 연결
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getActivity(), MbtiActivity.class);
-                intent.putExtra("mbti", "ISFJ");
-                startActivity(intent);
+                intent.putExtra("mbti", "ISFJ");                    // 다음 액티비티에 전달할 MBTI 정보
+                startActivity(intent);                                          // 해당하는 액티비티로 넘어감
             }
         });
 
-        button_INFJ.setOnClickListener(new View.OnClickListener() {
+        button_INFJ.setOnClickListener(new View.OnClickListener() {             // MBTI 버튼 연결
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getActivity(), MbtiActivity.class);
-                intent.putExtra("mbti", "INFJ");
-                startActivity(intent);
+                intent.putExtra("mbti", "INFJ");                    // 다음 액티비티에 전달할 MBTI 정보
+                startActivity(intent);                                          // 해당하는 액티비티로 넘어감
             }
         });
 
-        button_INTJ.setOnClickListener(new View.OnClickListener() {
+        button_INTJ.setOnClickListener(new View.OnClickListener() {             // MBTI 버튼 연결
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getActivity(), MbtiActivity.class);
-                intent.putExtra("mbti", "INTJ");
-                startActivity(intent);
+                intent.putExtra("mbti", "INTJ");                    // 다음 액티비티에 전달할 MBTI 정보
+                startActivity(intent);                                          // 해당하는 액티비티로 넘어감
             }
         });
 
-        button_ISTP.setOnClickListener(new View.OnClickListener() {
+        button_ISTP.setOnClickListener(new View.OnClickListener() {             // MBTI 버튼 연결
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getActivity(), MbtiActivity.class);
-                intent.putExtra("mbti", "ISTP");
-                startActivity(intent);
+                intent.putExtra("mbti", "ISTP");                    // 다음 액티비티에 전달할 MBTI 정보
+                startActivity(intent);                                          // 해당하는 액티비티로 넘어감
             }
         });
 
-        button_ISFP.setOnClickListener(new View.OnClickListener() {
+        button_ISFP.setOnClickListener(new View.OnClickListener() {             // MBTI 버튼 연결
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getActivity(), MbtiActivity.class);
-                intent.putExtra("mbti", "ISFP");
-                startActivity(intent);
+                intent.putExtra("mbti", "ISFP");                    // 다음 액티비티에 전달할 MBTI 정보
+                startActivity(intent);                                          // 해당하는 액티비티로 넘어감
             }
         });
 
-        button_INFP.setOnClickListener(new View.OnClickListener() {
+        button_INFP.setOnClickListener(new View.OnClickListener() {             // MBTI 버튼 연결
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getActivity(), MbtiActivity.class);
-                intent.putExtra("mbti", "INFP");
-                startActivity(intent);
+                intent.putExtra("mbti", "INFP");                    // 다음 액티비티에 전달할 MBTI 정보
+                startActivity(intent);                                          // 해당하는 액티비티로 넘어감
             }
         });
 
-        button_INTP.setOnClickListener(new View.OnClickListener() {
+        button_INTP.setOnClickListener(new View.OnClickListener() {             // MBTI 버튼 연결
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getActivity(), MbtiActivity.class);
-                intent.putExtra("mbti", "INTP");
-                startActivity(intent);
+                intent.putExtra("mbti", "INTP");                    // 다음 액티비티에 전달할 MBTI 정보
+                startActivity(intent);                                          // 해당하는 액티비티로 넘어감
             }
         });
 
-        button_ESTP.setOnClickListener(new View.OnClickListener() {
+        button_ESTP.setOnClickListener(new View.OnClickListener() {             // MBTI 버튼 연결
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getActivity(), MbtiActivity.class);
-                intent.putExtra("mbti", "ESTP");
-                startActivity(intent);
+                intent.putExtra("mbti", "ESTP");                    // 다음 액티비티에 전달할 MBTI 정보
+                startActivity(intent);                                          // 해당하는 액티비티로 넘어감
             }
         });
 
-        button_ESFP.setOnClickListener(new View.OnClickListener() {
+        button_ESFP.setOnClickListener(new View.OnClickListener() {             // MBTI 버튼 연결
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getActivity(), MbtiActivity.class);
-                intent.putExtra("mbti", "ESFP");
-                startActivity(intent);
+                intent.putExtra("mbti", "ESFP");                    // 다음 액티비티에 전달할 MBTI 정보
+                startActivity(intent);                                          // 해당하는 액티비티로 넘어감
             }
         });
 
-        button_ENFP.setOnClickListener(new View.OnClickListener() {
+        button_ENFP.setOnClickListener(new View.OnClickListener() {             // MBTI 버튼 연결
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getActivity(), MbtiActivity.class);
-                intent.putExtra("mbti", "ENFP");
-                startActivity(intent);
+                intent.putExtra("mbti", "ENFP");                    // 다음 액티비티에 전달할 MBTI 정보
+                startActivity(intent);                                          // 해당하는 액티비티로 넘어감
             }
         });
 
-        button_ENTP.setOnClickListener(new View.OnClickListener() {
+        button_ENTP.setOnClickListener(new View.OnClickListener() {             // MBTI 버튼 연결
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getActivity(), MbtiActivity.class);
-                intent.putExtra("mbti", "ENTP");
-                startActivity(intent);
+                intent.putExtra("mbti", "ENTP");                    // 다음 액티비티에 전달할 MBTI 정보
+                startActivity(intent);                                          // 해당하는 액티비티로 넘어감
             }
         });
 
-        button_ESTJ.setOnClickListener(new View.OnClickListener() {
+        button_ESTJ.setOnClickListener(new View.OnClickListener() {             // MBTI 버튼 연결
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getActivity(), MbtiActivity.class);
-                intent.putExtra("mbti", "ESTJ");
-                startActivity(intent);
+                intent.putExtra("mbti", "ESTJ");                    // 다음 액티비티에 전달할 MBTI 정보
+                startActivity(intent);                                          // 해당하는 액티비티로 넘어감
             }
         });
 
-        button_ESFJ.setOnClickListener(new View.OnClickListener() {
+        button_ESFJ.setOnClickListener(new View.OnClickListener() {             // MBTI 버튼 연결
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getActivity(), MbtiActivity.class);
-                intent.putExtra("mbti", "ESFJ");
-                startActivity(intent);
+                intent.putExtra("mbti", "ESFJ");                    // 다음 액티비티에 전달할 MBTI 정보
+                startActivity(intent);                                          // 해당하는 액티비티로 넘어감
             }
         });
 
-        button_ENFJ.setOnClickListener(new View.OnClickListener() {
+        button_ENFJ.setOnClickListener(new View.OnClickListener() {             // MBTI 버튼 연결
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getActivity(), MbtiActivity.class);
-                intent.putExtra("mbti", "ENFJ");
-                startActivity(intent);
+                intent.putExtra("mbti", "ENFJ");                    // 다음 액티비티에 전달할 MBTI 정보
+                startActivity(intent);                                          // 해당하는 액티비티로 넘어감
             }
         });
 
-        button_ENTJ.setOnClickListener(new View.OnClickListener() {
+        button_ENTJ.setOnClickListener(new View.OnClickListener() {             // MBTI 버튼 연결
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getActivity(), MbtiActivity.class);
-                intent.putExtra("mbti", "ENTJ");
-                startActivity(intent);
+                intent.putExtra("mbti", "ENTJ");                    // 다음 액티비티에 전달할 MBTI 정보
+                startActivity(intent);                                          // 해당하는 액티비티로 넘어감
             }
         });
 
