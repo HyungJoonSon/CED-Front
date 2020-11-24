@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.ImageButton;
+import android.widget.ListView;
 import android.widget.TextView;
 
 import com.example.ced.R;
@@ -24,9 +25,10 @@ import java.util.List;
 public class JobInfoActivity extends AppCompatActivity {
     private ImageButton back;
     private ServiceApi service;
-    private List<JobSummary> items;
+    private List<String> items;
     private String jobselected;
     private ArrayAdapter<String> adapter;
+    private ListView listview;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,9 +41,9 @@ public class JobInfoActivity extends AppCompatActivity {
 //        if(testString!=null){
 //            test.setText();
 //        }
-        items = new ArrayList<JobSummary>();
-//        adapter = new ArrayAdapter(this, android.R.layout.simple_list_item_multiple_choice, items);
-//
+         items = new ArrayList<String>();
+         adapter = new ArrayAdapter(this, android.R.layout.simple_list_item_multiple_choice, items);
+         listview.setAdapter(adapter);
 //
 //        jobselected=jobinfoIntent.getStringExtra("jobfeild");
 //        joblisting(jobselected);
@@ -62,7 +64,7 @@ public class JobInfoActivity extends AppCompatActivity {
             @Override
             public void onResponse(Call<JobSummaryResponse> call, Response<JobSummaryResponse> response) {
             JobSummaryResponse info =response.body();
-                items=info.getResult();
+
 
 
             }
