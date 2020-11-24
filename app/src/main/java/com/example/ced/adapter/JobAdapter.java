@@ -17,7 +17,7 @@ import java.util.List;
 public class JobAdapter extends ArrayAdapter {
 
     public JobAdapter(@NonNull Context context, List<JobData> list) {
-        super(context, 0,list);
+        super(context, 0, list);
     }
 
     public View getView(int position, View convertView, ViewGroup parent) {
