@@ -147,23 +147,40 @@
             android:background="#a0a0a0" />
 
         <LinearLayout
+            android:id="@+id/btn"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:gravity="center_horizontal"
-            android:orientation="vertical"
-            android:paddingLeft="15dp"
-            android:paddingTop="10dp"
-            android:paddingRight="15dp"
-            android:paddingBottom="10dp">
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
+            android:gravity="center"
+            android:orientation="horizontal"
+            app:layout_constraintBottom_toBottomOf="parent"
+            tools:ignore="MissingConstraints">
 
             <Button
                 android:id="@+id/recordbtn"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_width="140dp"
+                android:layout_height="70dp"
                 android:background="@drawable/rank_stopwatch_ripple"
                 android:drawableTop="@drawable/ic_baseline_sticky_note"
+                android:paddingRight="5dp"
                 android:stateListAnimator="@null"
                 android:text="기록지"
+                android:textColor="@color/black" />
+
+            <View
+                android:layout_width="50dp"
+                android:layout_height="0dp" />
+
+            <Button
+                android:id="@+id/studybtn"
+                android:layout_width="140dp"
+                android:layout_height="70dp"
+                android:layout_gravity="right"
+                android:background="@drawable/rank_stopwatch_ripple"
+                android:drawableTop="@drawable/ic_baseline_timer_24"
+                android:stateListAnimator="@null"
+                android:text="공부시작"
                 android:textColor="@color/black" />
         </LinearLayout>
 
@@ -172,7 +189,7 @@
             android:layout_height="1dp"
             android:layout_marginLeft="15dp"
             android:layout_marginRight="15dp"
-            android:background="#a0a0a0" />
+            android:background="#a0a0a0"/>
 
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

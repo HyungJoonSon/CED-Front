@@ -1,8 +1,32 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    android:nestedScrollingEnabled="false">
+
+    <ScrollView
+        android:id="@+id/ScrollView1"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="210dp"
+        android:layout_marginBottom="80dp"
+        android:fadeScrollbars="false"
+        android:scrollbarFadeDuration="0"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0"
+        tools:layout_editor_absoluteX="0dp">
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/mainRecyclerView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingBottom="80dp" />
+
+    </ScrollView>
 
     <LinearLayout
         android:id="@+id/ranktop"
@@ -29,89 +53,104 @@
 
         <View
             android:layout_width="113dp"
-            android:layout_height="0dp"/>
+            android:layout_height="0dp" />
 
         <ImageButton
+            android:id="@+id/renew"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="@drawable/setting_ripple"
-            android:src="@drawable/ic_baseline_update_24"/>
+            android:src="@drawable/ic_baseline_update_24" />
     </LinearLayout>
 
     <LinearLayout
         android:id="@+id/ranktitle"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_width="411dp"
+        android:layout_height="65dp"
+        android:layout_marginTop="20dp"
         android:gravity="center_vertical"
         android:orientation="horizontal"
         android:paddingLeft="15dp"
         android:paddingTop="10dp"
         android:paddingRight="15dp"
         android:paddingBottom="10dp"
-        app:layout_constraintTop_toBottomOf="@+id/ranktop">
+        app:layout_constraintTop_toBottomOf="@+id/ranktop"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteX="0dp">
 
         <TextView
+            android:id="@+id/userRank"
             android:layout_width="80dp"
-            android:layout_height="30dp"
+            android:layout_height="40dp"
             android:background="#D5D5D5"
             android:gravity="center_horizontal|center_vertical"
-            android:text="순위"
+            android:text="15"
             android:textColor="#000000"
             android:textSize="20sp" />
 
         <TextView
+            android:id="@+id/userId"
             android:layout_width="150dp"
-            android:layout_height="30dp"
+            android:layout_height="40dp"
             android:background="#D5D5D5"
             android:gravity="center"
-            android:text="아이디"
+            android:text="ced"
             android:textColor="#000000"
             android:textSize="20sp" />
 
         <TextView
+            android:id="@+id/userTime"
             android:layout_width="150dp"
-            android:layout_height="30dp"
+            android:layout_height="40dp"
             android:background="#D5D5D5"
             android:gravity="center"
-            android:text="공부 시간"
             android:textColor="#000000"
             android:textSize="20sp" />
     </LinearLayout>
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginTop="115dp"
-        android:layout_marginBottom="80dp"
-        android:paddingLeft="15dp"
-        android:paddingTop="10dp"
-        android:paddingRight="15dp"
-        android:paddingBottom="10dp"
-        android:scrollbars="vertical"
-        app:layout_constraintBottom_toTopOf="@+id/rankbotton"
-        app:layout_constraintTop_toBottomOf="@+id/ranktitle" />
-
-    <LinearLayout
-        android:id="@+id/rankbotton"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="0dp"
-        android:gravity="center_vertical"
-        android:orientation="horizontal"
-        android:paddingLeft="15dp"
-        android:paddingTop="10dp"
-        android:paddingRight="15dp"
-        android:paddingBottom="10dp"
-        app:layout_constraintBottom_toBottomOf="parent"
+    <TableLayout
+        android:id="@+id/tableLayout"
+        android:layout_width="352dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginEnd="32dp"
+        android:stretchColumns="*"
+        app:layout_constraintBottom_toTopOf="@+id/ScrollView1"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent">
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ranktitle"
+        tools:ignore="MissingConstraints">
 
-        <Button
+        <TableRow
             android:layout_width="match_parent"
-            android:layout_height="60dp"
-            android:background="@drawable/rank_stopwatch_ripple"
-            android:stateListAnimator="@null"
-            android:text="시작버튼"
-            android:textColor="@color/black" />
-    </LinearLayout>
+            android:layout_height="40dp"
+            android:background="#EAEAEA">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:gravity="center"
+                android:text="순위"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:gravity="center"
+                android:text="아이디"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:gravity="center"
+                android:text="공부시간"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
+        </TableRow>
+    </TableLayout>
+
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -16,6 +16,7 @@ import androidx.fragment.app.Fragment;
 import com.example.ced.R;
 import com.example.ced.activity.RecordListActivity;
 import com.example.ced.activity.SettingActivity;
+import com.example.ced.activity.StopwatchActivity;
 
 public class FragUser extends Fragment {
 
@@ -24,6 +25,7 @@ public class FragUser extends Fragment {
     private TextView famousSaying;
     private TextView famousName;
     private Button recordButton;
+    private Button studyButton;
     private ImageButton settingButton;
 
     @Nullable
@@ -35,6 +37,7 @@ public class FragUser extends Fragment {
         famousName = view.findViewById(R.id.fragfname);
         famousSaying = view.findViewById(R.id.fragfsaying);
         recordButton = view.findViewById(R.id.recordbtn);
+        studyButton = view.findViewById(R.id.studybtn);
         settingButton = view.findViewById(R.id.settingbtn);                                 // xml의 컴포넌트와 각각 연결
 
         // 액티비티에서 닉네임, 명언, 명언을 사용한 사람의 이름를 받아와서 출력
@@ -56,6 +59,17 @@ public class FragUser extends Fragment {
                 Intent intent = new Intent(getActivity(), RecordListActivity.class);
                 intent.putExtra("UserID",getArguments().getString("UserID"));
                 startActivity(intent);                                                      // 유저의 아이디와 함께 다음화면으로 넘어감
+            }
+        });
+
+        studyButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getActivity(), StopwatchActivity.class);
+                intent.putExtra("UserName", getArguments().getString("UserName"));
+                intent.putExtra("UserID", getArguments().getString("UserID"));
+                intent.putExtra("Time",getArguments().getString("Time"));
+                startActivity(intent); //다음화면으로 넘어감
             }
         });
 

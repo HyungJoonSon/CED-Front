@@ -1,73 +1,97 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:andriod="http://schemas.android.com/apk/res-auto"
-    android:contextClickable="true"
-    android:orientation="vertical">
+    tools:context=".activity.StopwatchActivity">
 
+
+    <LinearLayout
+        android:id="@+id/title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="100dp"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:paddingLeft="15dp"
+        android:paddingTop="10dp"
+        android:paddingRight="15dp"
+        android:paddingBottom="10dp"
+        app:layout_constraintBottom_toTopOf="@+id/time_out"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteX="0dp">
+
+
+        <TextView
+            android:id="@+id/userId"
+            android:layout_width="230dp"
+            android:layout_height="40dp"
+            android:background="#D5D5D5"
+            android:gravity="center"
+            android:textColor="#000000"
+            android:textSize="20sp" />
+
+        <TextView
+            android:id="@+id/userTime"
+            android:layout_width="150dp"
+            android:layout_height="40dp"
+            android:background="#D5D5D5"
+            android:gravity="center"
+            android:textColor="#000000"
+            android:textSize="20sp" />
+    </LinearLayout>
 
     <TextView
         android:id="@+id/time_out"
         android:layout_width="match_parent"
         android:layout_height="100dp"
-        android:background="#cccccc"
         android:gravity="center"
         android:text="00:00:00"
-        android:textColor="#777777"
-        android:textSize="40sp"
+        android:textSize="80sp"
+        app:layout_constraintBottom_toTopOf="@+id/linearLayout"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.645"
         tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteX="178dp"
-        tools:layout_editor_absoluteY="120dp" />
+        tools:layout_editor_absoluteX="0dp" />
 
-    <TextView
-        android:layout_width="fill_parent"
-        android:layout_height="57dp"
-        android:background="#333333"
+    <LinearLayout
+        android:id="@+id/linearLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="200dp"
         android:gravity="center"
-        android:text="기록"
-        android:textColor="#ffffff"
-        android:textSize="25sp"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="parent"
         tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteX="182dp"
-        tools:layout_editor_absoluteY="194dp" />
+        tools:layout_editor_absoluteX="0dp">
 
-    <TextView
-        android:id="@+id/record"
-        android:layout_width="fill_parent"
-        android:layout_height="346dp"
-        android:padding="10dp"
-        android:text=""
-        android:textSize="20sp"
-        tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteX="188dp"
-        tools:layout_editor_absoluteY="274dp" />
+        <Button
+            android:id="@+id/btn_start"
+            android:layout_width="140dp"
+            android:layout_height="70dp"
+            android:onClick="myOnClick"
+            android:text="시작"
+            android:textColor="@color/black"
+            android:textSize="25dp"
+            app:rippleColor="@color/teal_700"
+            tools:ignore="MissingConstraints" />
 
-    <Button
-        android:id="@+id/btn_start"
-        android:layout_width="100dp"
-        android:layout_height="50dp"
-        android:onClick="myOnClick"
-        android:layout_gravity="center"
-        android:text="시작"
-        tools:ignore="MissingConstraints" />
+        <View
+            android:layout_width="50dp"
+            android:layout_height="0dp" />
 
-    <Button
-        android:id="@+id/btn_rec"
-        android:layout_width="100dp"
-        android:layout_height="50dp"
-        android:layout_gravity="center"
-        android:enabled="false"
-        android:onClick="myOnClick"
-        android:text="기록"
-        tools:ignore="MissingConstraints" />
+        <Button
+            android:id="@+id/btn_back"
+            android:layout_width="140dp"
+            android:layout_height="70dp"
+            android:onClick="myOnClick"
+            android:text="저장하기"
+            android:textColor="@color/black"
+            android:textSize="25dp"
+            app:rippleColor="#009688" />
 
-    <Button
-        android:id="@+id/btn_back"
-        android:layout_width="100dp"
-        android:layout_height="50dp"
-        android:layout_gravity="center"
-        android:onClick="myOnClick"
-        android:text="돌아가기" />
-</LinearLayout>
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
