@@ -5,8 +5,10 @@ import com.example.ced.data.JoinRequest;
 import com.example.ced.data.CodeResponse;
 import com.example.ced.data.LoginRequest;
 import com.example.ced.data.LoginResponse;
+import com.example.ced.data.RankData;
 import com.example.ced.data.RankRequest;
 import com.example.ced.data.RankResponse;
+import com.example.ced.data.RankUser;
 
 import retrofit2.Call;
 import retrofit2.http.Body;
@@ -34,6 +36,9 @@ public interface ServiceApi {
 
     @PATCH("/challenge/renewal")
     Call<CodeResponse> renewalRank(@Body RankRequest data);
+
+    @GET("/challenge/user")
+    Call<RankUser> getUserRank(@Query("UserID") String data);
 
     @GET("/job")
     Call<JobDataResponse> readJobSummary(@Query("JobField") String data);

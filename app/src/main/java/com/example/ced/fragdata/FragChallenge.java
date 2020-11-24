@@ -12,15 +12,21 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.ced.R;
+import com.example.ced.adapter.RankAdapter;
+import com.example.ced.adapter.RecordAdapter;
 import com.example.ced.data.CodeResponse;
+import com.example.ced.data.RankData;
 import com.example.ced.data.RankRequest;
 import com.example.ced.data.RankResponse;
 import com.example.ced.data.UserRank;
 import com.example.ced.network.RetrofitClient;
 import com.example.ced.network.ServiceApi;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import retrofit2.Call;
@@ -35,6 +41,9 @@ public class FragChallenge extends Fragment {
     private ServiceApi service;
     private String Time;
     private String Name;
+    private RecyclerView rankListView;
+    private RankAdapter adapter;
+
 
     @Nullable
     @Override
@@ -44,6 +53,7 @@ public class FragChallenge extends Fragment {
         UserID = view.findViewById(R.id.userId);
         UserTime = view.findViewById(R.id.userTime);
         service = RetrofitClient.getClient().create(ServiceApi.class);
+        rankListView = view.findViewById(R.id.challengeRecyclerView);
 
         Name = getArguments().getString("UserName") + "님";
         Time = getArguments().getString("Time");
@@ -51,13 +61,16 @@ public class FragChallenge extends Fragment {
         UserID.setText(Name);
         UserTime.setText(Time);
 
-        //renewTime(new RankRequest(Name, changeTime(Time)));
+        rankListView.setLayoutManager(new LinearLayoutManager(getActivity())); // 리사이클러뷰의 매니저 할당
 
+        adapter = new RankAdapter(new ArrayList<RankData>());
+        rankListView.setAdapter(adapter);
+        renewRank();
 
         renewBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                renewTime(new RankRequest(Name, changeTime(Time)));
+//                renewTime(new RankRequest(Name, changeTime(Time)));
                 renewRank();
             }
         });
@@ -84,13 +97,18 @@ public class FragChallenge extends Fragment {
         });
     }
 
-    private void renewRank() {
+    public void renewRank() {
         service.getRank().enqueue(new Callback<RankResponse>() {
             @Override
             public void onResponse(Call<RankResponse> call, Response<RankResponse> response) {
                 RankResponse user = response.body();
                 List<UserRank> result = user.getResult();
+                List<RankData> inputList = new ArrayList<RankData>();
                 //리스트에 출력하기
+                for(int i = 0; i< result.size(); i++)
+                    inputList.add(new RankData(i+1, result.get(i).getUserid(), result.get(i).getWeekly()));
+
+                adapter.setList(inputList);
             }
 
             @Override
