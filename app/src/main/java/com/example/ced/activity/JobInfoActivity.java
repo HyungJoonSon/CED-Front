@@ -4,76 +4,87 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
-import android.widget.ArrayAdapter;
+import android.widget.AdapterView;
 import android.widget.ImageButton;
 import android.widget.ListView;
-import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.ced.R;
-import com.example.ced.data.JobSummary;
-import com.example.ced.data.JobSummaryResponse ;
+import com.example.ced.adapter.JobAdapter;
+import com.example.ced.data.JobData;
+import com.example.ced.data.JobDataResponse;
+import com.example.ced.network.RetrofitClient;
 import com.example.ced.network.ServiceApi;
+
+import java.util.List;
+
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-import java.util.ArrayList;
-import java.util.List;
 
+public class JobInfoActivity extends AppCompatActivity implements View.OnClickListener {
 
-public class JobInfoActivity extends AppCompatActivity {
     private ImageButton back;
-    private ServiceApi service;
-    private List<String> items;
-    private String jobselected;
-    private ArrayAdapter<String> adapter;
     private ListView listview;
+    private List<JobData> jobList;
+    private JobAdapter adapter;
+    private ServiceApi service;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_job_info);
-        Intent jobinfoIntent=getIntent();
-//        String testString;
-//        TextView test=(TextView)findViewById(R.id.tester);
-//        testString=jobinfoIntent.getStringExtra("jobfield");
-//        if(testString!=null){
-//            test.setText();
-//        }
-         items = new ArrayList<String>();
-         adapter = new ArrayAdapter(this, android.R.layout.simple_list_item_multiple_choice, items);
-         listview.setAdapter(adapter);
-//
-//        jobselected=jobinfoIntent.getStringExtra("jobfeild");
-//        joblisting(jobselected);
-//        adapter.notifyDataSetChanged();
 
+        service = RetrofitClient.getClient().create(ServiceApi.class);
 
-        //닫기 버튼
-        back=(ImageButton) findViewById(R.id.infobackbtn);
+        back = (ImageButton) findViewById(R.id.infobackbtn);
+        listview = findViewById(R.id.listview_jobinfo);
+        setListView(getIntent().getStringExtra("jobSelect"));
+
+        listview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Intent intent = new Intent(getApplicationContext(), JobDetailActivity.class);
+                intent.putExtra("JobField", jobList.get(position).getJobField());
+                intent.putExtra("JobName", jobList.get(position).getJobName());
+                intent.putExtra("JobInfo", jobList.get(position).getJobInfo());
+                startActivity(intent);
+            }
+        });
+
+        // 뒤로가기 버튼
         back.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) { finish(); }
+            public void onClick(View v) {
+                finish();
+            }
         });
-
     }
 
-    protected void joblisting(String data){
-        service.readJobSummary(data).enqueue(new Callback<JobSummaryResponse>() {
+    protected void setListView(String data) {
+        service.readJobSummary(data).enqueue(new Callback<JobDataResponse>() {
             @Override
-            public void onResponse(Call<JobSummaryResponse> call, Response<JobSummaryResponse> response) {
-            JobSummaryResponse info =response.body();
+            public void onResponse(Call<JobDataResponse> call, Response<JobDataResponse> response) {
+                JobDataResponse temp = response.body();
+                jobList = temp.getResult();
 
-
-
+                adapter = new JobAdapter(JobInfoActivity.this, jobList);
+                listview.setAdapter(adapter);
             }
 
             @Override
-            public void onFailure(Call<JobSummaryResponse> call, Throwable t) {
-
+            public void onFailure(Call<JobDataResponse> call, Throwable t) {
+                Toast.makeText(JobInfoActivity.this, "검색 오류 발생", Toast.LENGTH_SHORT).show();
+                Log.e("검색 오류 발생", t.getMessage());
             }
         });
+    }
 
+    @Override
+    public void onClick(View v) {
     }
 }

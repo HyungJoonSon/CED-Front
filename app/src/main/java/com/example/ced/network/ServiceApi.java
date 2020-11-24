@@ -1,7 +1,6 @@
 package com.example.ced.network;
 
-import com.example.ced.data.JobDetailResponse;
-import com.example.ced.data.JobSummaryResponse;
+import com.example.ced.data.JobDataResponse;
 import com.example.ced.data.JoinRequest;
 import com.example.ced.data.CodeResponse;
 import com.example.ced.data.LoginRequest;
@@ -36,9 +35,6 @@ public interface ServiceApi {
     @PATCH("/challenge/renewal")
     Call<CodeResponse> renewalRank(@Body RankRequest data);
 
-    @GET("/job/jobname")
-    Call<JobDetailResponse> readJobDetail(@Query("JobName") String data);
-
-    @GET("/job/jobfield")
-    Call<JobSummaryResponse> readJobSummary(@Query("JobField") String data);
+    @GET("/job")
+    Call<JobDataResponse> readJobSummary(@Query("JobField") String data);
 }

@@ -41,23 +41,6 @@
             android:text="직업 목록"
             android:textColor="@color/black"
             android:textSize="35dp" />
-
-        <View
-            android:layout_width="50dp"
-            android:layout_height="0dp" />
-
-        <!--        user_record_ripple-->
-        <Button
-            android:id="@+id/choicebtn"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:background="@drawable/rank_stopwatch_ripple"
-            android:stateListAnimator="@null"
-            android:fontFamily="@font/nbgothic"
-            android:gravity="center_horizontal|center_vertical"
-            android:text="완료"
-            android:textColor="@color/black"
-            android:textSize="20dp" />
     </LinearLayout>
 
     <View
@@ -69,32 +52,18 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/job_data_selecterTop" />
 
-
-    <ListView
-        android:id="@+id/listview_jobinfo"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginTop="70dp"
-        android:layout_marginBottom="71dp"
-        android:layout_weight="0.7"
-        android:choiceMode="multipleChoice"
-        app:layout_constraintTop_toBottomOf="@+id/jobinfo_line1" />
+        android:layout_marginTop="62dp"
+        app:layout_constraintTop_toBottomOf="@+id/job_data_selecterTop">
 
-    <View
-        android:id="@+id/jobinfo_line1"
+        <ListView
+        android:id="@+id/listview_jobinfo"
         android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:background="#a0a0a0"
-        app:layout_constraintBottom_toTopOf="@+id/selectall_btn_layout"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        android:layout_height="match_parent" />
+    </LinearLayout>
 
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="405dp"
-        android:layout_height="66dp"
-        android:text="TextView"
-        tools:layout_editor_absoluteX="3dp"
-        tools:layout_editor_absoluteY="660dp" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
