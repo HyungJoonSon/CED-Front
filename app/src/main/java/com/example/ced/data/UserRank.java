@@ -24,4 +24,5 @@ public class UserRank {
     public int getWeekly() {
         return weekly;
     }
+
 }

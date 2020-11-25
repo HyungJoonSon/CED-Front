@@ -38,9 +38,11 @@ public class FragChallenge extends Fragment {
     private ImageButton renewBtn;
     private TextView UserID;
     private TextView UserTime;
+    private TextView UserRank;
     private ServiceApi service;
     private String Time;
     private String Name;
+   // private String Rank;
     private RecyclerView rankListView;
     private RankAdapter adapter;
 
@@ -50,10 +52,12 @@ public class FragChallenge extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         view = inflater.inflate(R.layout.fragment_challenge, container, false);
         renewBtn = view.findViewById(R.id.renew);
+        UserRank = view.findViewById(R.id.userRank);
         UserID = view.findViewById(R.id.userId);
         UserTime = view.findViewById(R.id.userTime);
         service = RetrofitClient.getClient().create(ServiceApi.class);
         rankListView = view.findViewById(R.id.challengeRecyclerView);
+
 
         Name = getArguments().getString("UserName") + "님";
         Time = getArguments().getString("Time");
@@ -70,11 +74,10 @@ public class FragChallenge extends Fragment {
         renewBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-//                renewTime(new RankRequest(Name, changeTime(Time)));
+                // renewTime(new RankRequest(Name, changeTime(Time)));
                 renewRank();
             }
         });
-
         return view;
     }
 
@@ -108,9 +111,14 @@ public class FragChallenge extends Fragment {
                 //리스트에 출력하기
                 for(int i = 0; i< result.size(); i++) {
                     inputList.add(new RankData(i + 1, result.get(i).getUserid(), result.get(i).getWeekly())); // 순위, 아이디, 시간 리스트에 저장
-                    int t = result.get(i).getWeekly() - (result.get(i).getWeekly()/100)*100;    // DB값 초로 나누기
+
+                    if((result.get(i).getUserid()).equals(getArguments().getString("UserId"))) {
+                        String tmp = Integer.toString(i + 1);
+                        UserRank.setText(tmp);
+                    }
                 }
                 adapter.setList(inputList); // adapter의 setList함수로 inputList넘겨줌
+
             }
 
             @Override

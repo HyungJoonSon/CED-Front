@@ -15,25 +15,14 @@ import java.util.List;
 
 public class RankAdapter extends RecyclerView.Adapter<RankAdapter.ViewHolder> {
 
-<<<<<<< HEAD
-    List<RankData> list;    // 랭킹 리스트
-=======
     // RecyclerView는 내부에 List를 만들어 두지 않으므로 List를 생성해준다.
     List<RankData> list;
->>>>>>> 3a4492c65634f1ceaf8d1a2daa0612e7c42fc112
 
     // 생성자
     public RankAdapter(List<RankData> list) {
         this.list = list;
     }
 
-<<<<<<< HEAD
-    // 뷰를 홀더에 보관하는 객체 -> findViewId 호출을
-    public class ViewHolder extends RecyclerView.ViewHolder {   // 리사이클러뷰 위에
-        public TextView userRank;   // 순위
-        public TextView userId; // 아이디
-        public TextView userTime;   // 공부시간
-=======
     // ListView와 다르게 ViewHolder 내부에 View가 존재하게 된다.
     // View와 ViewHolder는 같다고 보는게 편하다.
     // 내부 클래스로 ViewHolder의 생성자가 있는 것을 볼 수 있다.
@@ -41,13 +30,11 @@ public class RankAdapter extends RecyclerView.Adapter<RankAdapter.ViewHolder> {
         public TextView userRank;
         public TextView userId;
         public TextView userTime;
->>>>>>> 3a4492c65634f1ceaf8d1a2daa0612e7c42fc112
 
         public ViewHolder(View view) {
             super(view);
 
             // 뷰 객체에 대한 참조. (hold strong reference)
-            // view 내용을 업데이트 하기 위해 findViewById 매번 호출
             this.userRank = view.findViewById(R.id.rankView);
             this.userId = view.findViewById(R.id.rankViewId);
             this.userTime = view.findViewById(R.id.rankViewTime);
@@ -65,7 +52,6 @@ public class RankAdapter extends RecyclerView.Adapter<RankAdapter.ViewHolder> {
         return viewHolder;                                                          // 뷰홀더 리턴
     }
 
-    /* 리사이클러뷰 사용할 때 스크롤뷰에서 사라진 위의 텍스트를 갱신해주기 위함(bind) */
     @Override
     // 만약 List의 크기가 커서 스크롤이 생긴하면
     // ListView와는 다르게 사라진 ViewHolder를 삭제하지 않고
@@ -82,13 +68,8 @@ public class RankAdapter extends RecyclerView.Adapter<RankAdapter.ViewHolder> {
     // 현재 List 내부의 항목 갯수를 반환한다.
     public int getItemCount() {
         return list.size();
-    }   // 리스트 수
+    }
 
-<<<<<<< HEAD
-    public void setList(List<RankData> list) {  // FragChalleng에서 List넘겨받음
-        this.list = list;   // list에 저장
-        notifyDataSetChanged(); // 리스트뷰 갱신
-=======
     // 이 함수는 Rank를 리프레쉬할 때 사용하는 함수로, List의 내용이 바뀌는 동시에
     // 보여지는 List도 갱신된다.
     // adapter를 갱신하므로써 보여지는 레이아웃을 갱신한다.
@@ -97,6 +78,5 @@ public class RankAdapter extends RecyclerView.Adapter<RankAdapter.ViewHolder> {
     public void setList(List<RankData> list) {
         this.list = list;
         notifyDataSetChanged();
->>>>>>> 3a4492c65634f1ceaf8d1a2daa0612e7c42fc112
     }
 }
