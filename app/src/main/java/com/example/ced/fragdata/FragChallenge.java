@@ -37,16 +37,16 @@ import retrofit2.Response;
 public class FragChallenge extends Fragment {
     private View view;
     private ImageButton renewBtn;
+    private TextView UserRank;
     private TextView UserID;
     private TextView UserTime;
-    private TextView UserRank;
     private ServiceApi service;
-    private String Time;
     private String Name;
-   // private String Rank;
+    private String ID;
+    private String Time;
+    private String Rank;
     private RecyclerView rankListView;
     private RankAdapter adapter;
-
 
     @Nullable
     @Override
@@ -59,46 +59,28 @@ public class FragChallenge extends Fragment {
         service = RetrofitClient.getClient().create(ServiceApi.class);
         rankListView = view.findViewById(R.id.challengeRecyclerView);
 
-
         Name = getArguments().getString("UserName") + "님";
-        Time = getArguments().getString("Time");
+        ID = getArguments().getString("UserID");
+        //Time = getArguments().getString("Time");
 
         UserID.setText(Name);
-        UserTime.setText(Time);
+        //UserTime.setText(Time);
 
         rankListView.setLayoutManager(new LinearLayoutManager(getActivity())); // 리사이클러뷰의 매니저 할당
-
         adapter = new RankAdapter(new ArrayList<RankData>());
         rankListView.setAdapter(adapter);
+
         renewRank();
 
         renewBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                renewTime(new RankRequest(Name, changeTime(Time)));
-                renewRank();
+                //renewTime(new RankRequest(Name, changeTime(Time)));
+                //renewRank();
+                //renewMine(Name);
             }
         });
         return view;
-    }
-
-    /* DB에 시간 넣는 함수 */
-    public void renewTime(RankRequest data) {
-        service.renewalRank(data).enqueue(new Callback<CodeResponse>() {    // renewalRank에 data 인큐
-            @Override
-            public void onResponse(Call<CodeResponse> call, Response<CodeResponse> response) {
-                CodeResponse code = response.body();
-                if (code.getCode() == 200) {
-                    Toast.makeText(getActivity(), "저장에 성공하셨습니다.", Toast.LENGTH_SHORT).show();
-                }
-            }
-
-            @Override
-            public void onFailure(Call<CodeResponse> call, Throwable t) {
-                Toast.makeText(getActivity(), "통신 오류 발생", Toast.LENGTH_SHORT).show();
-                Log.e("통신 오류 발생", t.getMessage());
-            }
-        });
     }
 
     /* DB에서 리스트 불러오는 함수 */
@@ -111,14 +93,14 @@ public class FragChallenge extends Fragment {
                 List<RankData> inputList = new ArrayList<RankData>();   // inputList에 랭크 넣기
                 //리스트에 출력하기
                 for(int i = 0; i< result.size(); i++) {
-                    inputList.add(new RankData(i + 1, result.get(i).getUserid(), result.get(i).getWeekly())); // 순위, 아이디, 시간 리스트에 저장
+                    int listTime = result.get(i).getWeekly();
+                    inputList.add(new RankData(i + 1, result.get(i).getUserid(), changeTime(listTime))); // 순위, 아이디, 시간 리스트에 저장
 
                     if((result.get(i).getUserid()).equals(getArguments().getString("UserName"))) {
                         String tmp = Integer.toString(i + 1);
                         UserRank.setText(tmp);
 
-                        Time = Integer.toString(result.get(i).getWeekly());
-
+                        Time = changeTime(result.get(i).getWeekly());
                         UserTime.setText(Time);
                     }
                 }
@@ -133,56 +115,10 @@ public class FragChallenge extends Fragment {
         });
     }
 
-//    public void renewMine(String data){
-//        service.getUserRank(data).enqueue(new Callback<RankUser>() {    // 값을 호출할때 파싱된 응답유형: RankUser
-//            @Override
-//            public void onResponse(Call<RankUser> call, Response<RankUser> response) {
-//                RankUser user = response.body();
-//                RankData mine = new RankData(0, "", 0);
-//                mine.setRank(user.getUserRank());
-//                mine.setTime(user.getTime());
-//                mine.setUserId(user.getUserID());
-//                UserRank.setText(mine.getRank());
-//                UserID.setText(mine.getUserId());
-//                UserTime.setText(mine.getTime());
-//            }
-//
-//            @Override
-//            public void onFailure(Call<RankUser> call, Throwable t) {
-//                Toast.makeText(getActivity(), "통신 오류 발생", Toast.LENGTH_LONG).show();
-//                Log.e("통신 오류 발생", t.getMessage());
-//            }
-//        });
-//    }
-
-
-    /* 시간 int로 바꾸는 함수 */
-    public int changeTime(String time){
-        int hour, min, sec, result;
-
-        String[] Time = time.split(":");
-        hour = Integer.parseInt(Time[0]);
-        min = Integer.parseInt(Time[1]);
-        sec = Integer.parseInt(Time[2]);
-
-        String tempHour=Integer.toString(hour);
-        String tempMin;
-        if(min<10){
-            tempMin="0"+Integer.toString(min);
-        }else if(min==0) {
-            tempMin="00";
-        }else{
-            tempMin=Integer.toString(min);
-        }
-        String tempSec;
-        if(min<10){
-            tempSec="0"+Integer.toString(sec);
-        }else if(sec==0) {
-            tempSec="00";
-        }else{
-            tempSec=Integer.toString(sec);
-        }
-        result = Integer.parseInt(tempHour+tempMin+tempSec);
-        return result;
+    public String changeTime(int time){
+        int hour = time/10000; //시간
+        int min = time/100 - hour*100; // (시간+분) - 시간
+        int sec = time - (time/100)*100; // 전체시간 - (시간+분)
+        return String.format("%d:%02d:%02d", hour, min, sec);
     }
 }

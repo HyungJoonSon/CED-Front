@@ -14,14 +14,24 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.ced.R;
+import com.example.ced.adapter.RankAdapter;
 import com.example.ced.data.CodeResponse;
 import com.example.ced.data.JoinRequest;
+import com.example.ced.data.RankData;
 import com.example.ced.data.RankRequest;
+import com.example.ced.data.RankResponse;
+import com.example.ced.data.RankUser;
+import com.example.ced.data.UserRank;
 import com.example.ced.fragdata.FragChallenge;
 import com.example.ced.network.RetrofitClient;
 import com.example.ced.network.ServiceApi;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -35,6 +45,7 @@ public class StopwatchActivity extends AppCompatActivity {
     TextView myOutput;
     Button myBtnStart;
     Button myBtnBack;
+    private ServiceApi service;
 
     final static int Init=0;
     final static int Run=1;
@@ -46,8 +57,6 @@ public class StopwatchActivity extends AppCompatActivity {
     String Name;
     String ID;
     String Time;
-    String totalTime;
-    boolean check;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -59,19 +68,18 @@ public class StopwatchActivity extends AppCompatActivity {
         myOutput=(TextView)findViewById(R.id.time_out);
         myBtnStart=(Button)findViewById(R.id.btn_start);
         myBtnBack=(Button)findViewById(R.id.btn_back);
+        service = RetrofitClient.getClient().create(ServiceApi.class);
 
         Intent intent1 = getIntent();
         Name =intent1.getStringExtra("UserName");
         ID = intent1.getStringExtra("UserId");
-        Time = intent1.getStringExtra("Time");
-        UserName.setText(Name+"'s 누적시간");   // stopwatch 페이지
-        UserTime.setText(Time); // 누적시간 출력
-    }
+        //Time = intent1.getStringExtra("Time");
 
-    @Override
-    protected void onDestroy(){
-        //TODO Auto-generated method stub
-        super.onDestroy();
+
+        renewMine(Name);
+        //UserName.setText(Name);   // stopwatch 페이지
+        //UserTime.setText(Time); // 누적시간 출력
+
     }
 
     public void myOnClick(View v) {
@@ -103,24 +111,22 @@ public class StopwatchActivity extends AppCompatActivity {
                 break;
             case R.id.btn_back:
                 String tempTime = myOutput.getText().toString();
-                Toast.makeText(StopwatchActivity.this, "공부시간이 기록되었습니다.", Toast.LENGTH_SHORT).show();
+                //Toast.makeText(StopwatchActivity.this, "공부시간이 기록되었습니다.", Toast.LENGTH_SHORT).show();
 
                 int t;  // 전체시간
+                Time = UserTime.getText().toString();
                 if(Time==null||Time.length()==0){
-                    t=changeTime("00:00:00", tempTime);
+                    t = addTime("00:00:00", tempTime);
                 }else{
-                    t=changeTime(Time, tempTime);
+                    t = addTime(Time, tempTime);
                 }
-                int hour = t/10000; //시간
-                int min = t/100 - hour*100; // (시간+분) - 시간
-                int sec = t - (t/100)*100; // 전체시간 - (시간+분)
-                totalTime = String.format("%d:%02d:%02d", hour, min, sec);
+
+                renewTime(new RankRequest(Name, t));
 
                 Intent intent = new Intent(getApplicationContext(), MainActivity.class);
                 intent.putExtra("UserName", Name);
                 intent.putExtra("UserID", ID);
-                intent.putExtra("Time", totalTime);
-                //intent.putExtra("Check", true);
+                //intent.putExtra("Time", totalTime);
                 startActivity(intent);
                 break;
         }
@@ -143,7 +149,7 @@ public class StopwatchActivity extends AppCompatActivity {
     }
 
     /* 시간 누적하는 함수 */
-    public int changeTime(String Time1, String Time2){ // Time1: 저장되어있는 시간, Time2: 새로 측정된 시간
+    public int addTime(String Time1, String Time2){ // Time1: 저장되어있는 시간, Time2: 새로 측정된 시간
         int hour, min, sec, result;
 
         String[] curTime = Time1.split(":");    // split함수 사용하여 문자열 나눔
@@ -161,8 +167,8 @@ public class StopwatchActivity extends AppCompatActivity {
         min = temp%60;
         hour = curHour+recHour+(temp/60);
 
-        String tempHour=Integer.toString(hour); 
-        String tempMin; // 두 
+        String tempHour=Integer.toString(hour);
+        String tempMin; // 두
         if(min<10){ // 분이 일의자리 수 이면
             tempMin="0"+Integer.toString(min);  // 앞에 0 자리 붙여줌
         } else if(min==0) {  // 0분이면
@@ -181,4 +187,43 @@ public class StopwatchActivity extends AppCompatActivity {
         result = Integer.parseInt(tempHour+tempMin+tempSec);    // 문자열들을 붙여 누적된 숫자로 변환
         return result;
     }
+
+
+    /* DB에 시간 넣는 함수 */
+    public void renewTime(RankRequest data) {
+        service.renewalRank(data).enqueue(new Callback<CodeResponse>() {    // renewalRank에 data 인큐
+            @Override
+            public void onResponse(Call<CodeResponse> call, Response<CodeResponse> response) {
+                CodeResponse code = response.body();
+                if (code.getCode() == 200) {
+                    Toast.makeText(StopwatchActivity.this, "저장에 성공하셨습니다.", Toast.LENGTH_SHORT).show();
+                }
+            }
+
+            @Override
+            public void onFailure(Call<CodeResponse> call, Throwable t) {
+                Toast.makeText(StopwatchActivity.this, "통신 오류 발생", Toast.LENGTH_SHORT).show();
+                Log.e("통신 오류 발생", t.getMessage());
+            }
+        });
+    }
+
+    public void renewMine(String Name){
+        service.getUserRank(Name).enqueue(new Callback<RankUser>() {
+            @Override
+            public void onResponse(Call<RankUser> call, Response<RankUser> response) {
+                RankUser user = response.body();
+                Toast.makeText(StopwatchActivity.this, "도대체 왜 안 돌아가니?~.", Toast.LENGTH_SHORT).show();
+                UserName.setText(user.getUserID());
+                UserTime.setText(user.getTime());
+            }
+
+            @Override
+            public void onFailure(Call<RankUser> call, Throwable t) {
+                Toast.makeText(StopwatchActivity.this,"통신 오류 발생", Toast.LENGTH_SHORT).show();
+                Log.e("통신 오류 발생", t.getMessage());
+            }
+        });
+    }
+
 }

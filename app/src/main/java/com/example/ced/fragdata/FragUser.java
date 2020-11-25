@@ -68,11 +68,11 @@ public class FragUser extends Fragment {
                 Intent intent = new Intent(getActivity(), StopwatchActivity.class);
                 intent.putExtra("UserName", getArguments().getString("UserName"));
                 intent.putExtra("UserID", getArguments().getString("UserID"));
-                intent.putExtra("Time",getArguments().getString("Time"));
+//                intent.putExtra("Time",getArguments().getString("Time"));
                 startActivity(intent); //다음화면으로 넘어감
             }
         });
-
+        
         return view;                                                                        // 해당 뷰를 반환(해당 뷰는 Main 액티비티에서 사용됨)
     }
 }

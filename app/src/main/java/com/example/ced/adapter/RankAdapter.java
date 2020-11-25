@@ -61,7 +61,7 @@ public class RankAdapter extends RecyclerView.Adapter<RankAdapter.ViewHolder> {
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         holder.userRank.setText(Integer.toString(list.get(position).getRank()));              // 뷰 홀더 내부의 아이템뷰 랭킹을 재정의
         holder.userId.setText(list.get(position).getUserId());                                // 뷰 홀더 내부의 아이템뷰 아이디을 재정의
-        holder.userTime.setText(Integer.toString(list.get(position).getTime()));              // 뷰 홀더 내부의 아이템뷰 시간을 재정의
+        holder.userTime.setText(list.get(position).getTime());              // 뷰 홀더 내부의 아이템뷰 시간을 재정의
     }
 
     @Override

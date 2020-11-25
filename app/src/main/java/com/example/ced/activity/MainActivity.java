@@ -72,11 +72,11 @@ public class MainActivity extends AppCompatActivity {
         Bundle bundle = new Bundle();                                       // 데이터를 위한 객체 생성
         UserID = intent.getStringExtra("UserID");                     // login에서 넘겨준 정보 할당
         UserName = intent.getStringExtra("UserName");
-        UserTime = intent.getStringExtra("Time");
+//        UserTime = intent.getStringExtra("Time");
         // login에서 넘겨준 정보 할당
         bundle.putString("UserID", UserID);                                 // 프래그먼트에 넘겨줄 정보를 번들에 넣어줌
         bundle.putString("UserName", UserName);
-        bundle.putString("Time",UserTime);
+//        bundle.putString("Time",UserTime);
         // 프래그먼트에 넘겨줄 정보를 번들에 넣어줌
         fragchallenge.setArguments(bundle);                                 // 해당 정보는 알아서 사용하면 됨
 

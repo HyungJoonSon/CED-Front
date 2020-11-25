@@ -32,4 +32,3 @@ public class Record {
     public String getContent() { return content; }
 }
 
-
