@@ -22,6 +22,7 @@ import com.example.ced.data.CodeResponse;
 import com.example.ced.data.RankData;
 import com.example.ced.data.RankRequest;
 import com.example.ced.data.RankResponse;
+import com.example.ced.data.RankUser;
 import com.example.ced.data.UserRank;
 import com.example.ced.network.RetrofitClient;
 import com.example.ced.network.ServiceApi;
@@ -74,7 +75,7 @@ public class FragChallenge extends Fragment {
         renewBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // renewTime(new RankRequest(Name, changeTime(Time)));
+                renewTime(new RankRequest(Name, changeTime(Time)));
                 renewRank();
             }
         });
@@ -112,13 +113,16 @@ public class FragChallenge extends Fragment {
                 for(int i = 0; i< result.size(); i++) {
                     inputList.add(new RankData(i + 1, result.get(i).getUserid(), result.get(i).getWeekly())); // 순위, 아이디, 시간 리스트에 저장
 
-                    if((result.get(i).getUserid()).equals(getArguments().getString("UserId"))) {
+                    if((result.get(i).getUserid()).equals(getArguments().getString("UserName"))) {
                         String tmp = Integer.toString(i + 1);
                         UserRank.setText(tmp);
+
+                        Time = Integer.toString(result.get(i).getWeekly());
+
+                        UserTime.setText(Time);
                     }
                 }
                 adapter.setList(inputList); // adapter의 setList함수로 inputList넘겨줌
-
             }
 
             @Override
@@ -129,7 +133,30 @@ public class FragChallenge extends Fragment {
         });
     }
 
-    /* 시간 int로 바꾸고 누적하는 함수 */
+//    public void renewMine(String data){
+//        service.getUserRank(data).enqueue(new Callback<RankUser>() {    // 값을 호출할때 파싱된 응답유형: RankUser
+//            @Override
+//            public void onResponse(Call<RankUser> call, Response<RankUser> response) {
+//                RankUser user = response.body();
+//                RankData mine = new RankData(0, "", 0);
+//                mine.setRank(user.getUserRank());
+//                mine.setTime(user.getTime());
+//                mine.setUserId(user.getUserID());
+//                UserRank.setText(mine.getRank());
+//                UserID.setText(mine.getUserId());
+//                UserTime.setText(mine.getTime());
+//            }
+//
+//            @Override
+//            public void onFailure(Call<RankUser> call, Throwable t) {
+//                Toast.makeText(getActivity(), "통신 오류 발생", Toast.LENGTH_LONG).show();
+//                Log.e("통신 오류 발생", t.getMessage());
+//            }
+//        });
+//    }
+
+
+    /* 시간 int로 바꾸는 함수 */
     public int changeTime(String time){
         int hour, min, sec, result;
 
