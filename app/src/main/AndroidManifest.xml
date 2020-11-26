@@ -14,16 +14,13 @@
         android:usesCleartextTraffic="true">
         <activity android:name=".activity.JobMbtiActivity"></activity>
         <activity android:name=".activity.JobInterviewActivity" />
-        <activity android:name=".activity.JobInterviewListActivity" /> <!-- <<<<<<< HEAD -->
-        <!-- //<<<<<<< HEAD -->
+        <activity android:name=".activity.JobInterviewListActivity" />
         <activity android:name=".activity.JobInfoListActivity" />
         <activity android:name=".activity.JobInfoActivity" />
-        <activity android:name=".activity.JobInfoListActivity" />
         <activity android:name=".activity.JobSelectorActivity" />
         <activity android:name=".activity.UserStopwatchActivity" />
         <activity android:name=".activity.UserRecordActivity" />
         <activity android:name=".activity.UserRecordWriteActivity" />
-        <activity android:name=".activity.SettingActivity" />
         <activity android:name=".activity.UserRecordListActivity" />
         <activity android:name=".activity.LoginActivity" />
         <activity android:name=".activity.JoinActivity" />
