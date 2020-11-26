@@ -7,7 +7,6 @@
     android:nestedScrollingEnabled="false"
     app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
-
     <LinearLayout
         android:id="@+id/ranktop"
         android:layout_width="match_parent"
@@ -39,8 +38,8 @@
             android:id="@+id/renew"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:background="@drawable/setting_ripple"
-            android:src="@drawable/ic_baseline_update_24" />
+            android:background="@drawable/button_transparent_ripple"
+            android:src="@drawable/ic_baseline_update" />
     </LinearLayout>
 
     <LinearLayout
@@ -63,7 +62,6 @@
             android:layout_height="40dp"
             android:background="#D5D5D5"
             android:gravity="center_horizontal|center_vertical"
-            android:text="15"
             android:textColor="#000000"
             android:textSize="20sp" />
 
@@ -73,7 +71,6 @@
             android:layout_height="40dp"
             android:background="#D5D5D5"
             android:gravity="center"
-            android:text="ced"
             android:textColor="#000000"
             android:textSize="20sp" />
 

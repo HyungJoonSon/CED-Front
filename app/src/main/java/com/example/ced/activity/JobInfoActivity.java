@@ -2,91 +2,39 @@ package com.example.ced.activity;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
-import android.widget.AdapterView;
 import android.widget.ImageButton;
-import android.widget.ListView;
-import android.widget.Toast;
+import android.widget.TextView;
 
 import com.example.ced.R;
-import com.example.ced.adapter.JobAdapter;
-import com.example.ced.data.JobData;
-import com.example.ced.data.JobDataResponse;
-import com.example.ced.network.RetrofitClient;
-import com.example.ced.network.ServiceApi;
 
-import java.util.List;
-
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
-
-
-public class JobInfoActivity extends AppCompatActivity implements View.OnClickListener {
-
-    private ImageButton back;
-    private ListView listview;
-    private List<JobData> jobList;
-    private JobAdapter adapter;
-    private ServiceApi service;
-
+public class JobInfoActivity extends AppCompatActivity {
+    private ImageButton backButton;
+    private TextView jobName;
+    private TextView jobField;
+    private TextView jobInfo;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_job_info);                     // xml과 java 소스 연결
+        setContentView(R.layout.activity_job_info);                   // xml과 java 소스 연결
 
-        service = RetrofitClient.getClient().create(ServiceApi.class);  // 통신을 위한 ServiceApi 생성
+        backButton = findViewById(R.id.jobdetailBack);
+        jobName = findViewById(R.id.jobdetailname);
+        jobField = findViewById(R.id.jobdetailfield);
+        jobInfo = findViewById(R.id.jobdetailInfo);                     // xml의 컴포넌트와 연결
 
-        back = (ImageButton) findViewById(R.id.infobackbtn);
-        listview = findViewById(R.id.listview_jobinfo);                 // xml의 컴포넌트와 연결
+        jobName.setText(getIntent().getStringExtra("JobName"));     // TextView의 내용을 전 액티비티에서 받은 내용으로 수정
+        jobField.setText(getIntent().getStringExtra("JobField"));   // TextView의 내용을 전 액티비티에서 받은 내용으로 수정
+        jobInfo.setText(getIntent().getStringExtra("JobInfo"));     // TextView의 내용을 전 액티비티에서 받은 내용으로 수정
 
-        setListView(getIntent().getStringExtra("jobSelect"));     // listview에 adapter와 datalist를 연결하는 함수(통신 기반)
+        backButton.setOnClickListener(new View.OnClickListener() {      // 닫기 버튼
 
-        // list의 Item을 클릭했을 때 일어나는 이벤트
-        listview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Intent intent = new Intent(getApplicationContext(), JobDetailActivity.class);
-                intent.putExtra("JobField", jobList.get(position).getJobField());
-                intent.putExtra("JobName", jobList.get(position).getJobName());
-                intent.putExtra("JobInfo", jobList.get(position).getJobInfo());
-                startActivity(intent);                                  // 위 정보를 가지고 다음 액티비티로 넘어간다.
-            }
-        });
-
-        // 뒤로가기 버튼
-        back.setOnClickListener(new View.OnClickListener() {            // 뒤로가기 버튼
             @Override
             public void onClick(View v) {
                 finish();
-            }                   // 해당 액티비티 종료
+            }                   // 해당 액티비티를 끝냄
         });
-    }
-
-    protected void setListView(String data) {                           // ListView를 Setting 하기 위한 함수(통신 기반)
-        service.readJobSummary(data).enqueue(new Callback<JobDataResponse>() {
-            @Override
-            public void onResponse(Call<JobDataResponse> call, Response<JobDataResponse> response) {
-                JobDataResponse temp = response.body();                 // 응답받은 정보를 받아와서
-                jobList = temp.getResult();                             // 정보 중에서 code를 제외하고 jobList에 넣어준다.
-
-                adapter = new JobAdapter(JobInfoActivity.this, jobList);    // listview의 adapter를 만들어주고
-                listview.setAdapter(adapter);                                       // listview와 adapter를 연결한다.
-            }
-
-            @Override
-            public void onFailure(Call<JobDataResponse> call, Throwable t) {
-                Toast.makeText(JobInfoActivity.this, "검색 오류 발생", Toast.LENGTH_SHORT).show();
-                Log.e("검색 오류 발생", t.getMessage());              // 오류가 발생하면 Toast 메시지를 보내고 log를 남긴다.
-            }
-        });
-    }
-
-    @Override
-    public void onClick(View v) {                                       // interface용 함수
     }
 }

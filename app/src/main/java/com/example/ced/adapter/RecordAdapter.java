@@ -1,13 +1,8 @@
 package com.example.ced.adapter;
 
-import android.content.Context;
-import android.content.DialogInterface;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -16,7 +11,6 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.ced.R;
 import com.example.ced.data.Record;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class RecordAdapter extends RecyclerView.Adapter<RecordAdapter.ViewHolder> {
@@ -35,14 +29,6 @@ public class RecordAdapter extends RecyclerView.Adapter<RecordAdapter.ViewHolder
     public void setOnItemClickListener(OnItemClickListener onItemClickListener) {
         this.onItemClickListener = onItemClickListener;
     }
-
-//    public interface OnItemLongClickListener {
-//        void onItemLongClick(View v, int pos);
-//    }
-//
-//    public void setOnItemLongClickListener(OnItemLongClickListener onItemLongClickListener) {
-//        this.onItemLongClickListener = onItemLongClickListener;
-//    }
 
     // 생성자에서 데이터 리스트 객체를 전달받음.
     public RecordAdapter(List<Record> list) {
@@ -70,17 +56,6 @@ public class RecordAdapter extends RecyclerView.Adapter<RecordAdapter.ViewHolder
                         onItemClickListener.onItemClick(v, position);   // item클릭 함수를 호출함(액티비티에서 정의)
                 }
             });
-
-//            view.setOnLongClickListener(new View.OnLongClickListener() {
-//                @Override
-//                public boolean onLongClick(View v) {
-//                    int position = getAdapterPosition();
-//                    if (position != RecyclerView.NO_POSITION)
-//                        onItemLongClickListener.onItemLongClick(v, position);
-//
-//                    return true;
-//                }
-//            });
         }
     }
 
@@ -88,7 +63,7 @@ public class RecordAdapter extends RecyclerView.Adapter<RecordAdapter.ViewHolder
     @Override
     // onCreateViewHolder() - 아이템 뷰를 위한 뷰홀더 객체 생성하여 리턴.
     public RecordAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.listview_record_item, parent, false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.view_record_item, parent, false);
         RecordAdapter.ViewHolder viewHolder = new ViewHolder(view);     // 해당 뷰를 만들어진 xml을 기반으로 구성하고 뷰홀더로 생성
         return viewHolder;                                              // 뷰홀더 리턴
     }

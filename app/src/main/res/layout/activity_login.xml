@@ -38,9 +38,9 @@
                 android:fontFamily="@font/bmhanna"
                 android:gravity="center"
                 android:text="CoStudy"
-                android:textStyle="bold"
                 android:textAlignment="center"
-                android:textColor="@color/black" />
+                android:textColor="@color/black"
+                android:textStyle="bold" />
 
 
             <EditText
@@ -72,7 +72,7 @@
                 android:layout_width="300dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
-                android:background="@drawable/login_ripple"
+                android:background="@drawable/button_gradient_ripple"
                 android:text="로그인"
                 android:textColor="#FF000000" />
 
@@ -81,7 +81,7 @@
                 android:layout_width="300dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
-                android:background="@drawable/login_ripple"
+                android:background="@drawable/button_gradient_ripple"
                 android:text="회원가입"
                 android:textColor="#FF000000" />
 

@@ -12,13 +12,12 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import com.example.ced.R;
-import com.example.ced.activity.JobInfoActivity;
-import com.example.ced.activity.JobInterviewActivity;
+import com.example.ced.activity.JobInterviewListActivity;
 import com.example.ced.activity.JobSelectorActivity;
-import com.example.ced.activity.MbtiActivity;
-import com.example.ced.activity.RecordListActivity;
+import com.example.ced.activity.JobMbtiActivity;
 
 public class FragJob extends Fragment {
+
     private View view;
     private Button jobDataBtn;
     private Button jobInterVeiwBtn;
@@ -70,7 +69,7 @@ public class FragJob extends Fragment {
         button_ESFJ = view.findViewById(R.id.button_ESFJ);
         button_ENFJ = view.findViewById(R.id.button_ENFJ);
         button_ENTJ = view.findViewById(R.id.button_ENTJ);                // xml의 컴포넌트와 연결
-        
+
         jobDataBtn.setOnClickListener(new View.OnClickListener() {              // 직업 정보 버튼 연결
             @Override
             public void onClick(View v) {
@@ -82,7 +81,7 @@ public class FragJob extends Fragment {
         jobInterVeiwBtn.setOnClickListener(new View.OnClickListener() {         // 직업 인터뷰 버튼 연결
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getActivity(), JobInterviewActivity.class);
+                Intent intent = new Intent(getActivity(), JobInterviewListActivity.class);
                 startActivity(intent);                                          // 해당하는 액티비티로 넘어감
             }
         });
@@ -90,7 +89,7 @@ public class FragJob extends Fragment {
         button_ISTJ.setOnClickListener(new View.OnClickListener() {             // MBTI 버튼 연결
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getActivity(), MbtiActivity.class);
+                Intent intent = new Intent(getActivity(), JobMbtiActivity.class);
                 intent.putExtra("mbti", "ISTJ");                    // 다음 액티비티에 전달할 MBTI 정보
                 startActivity(intent);                                          // 해당하는 액티비티로 넘어감
             }
@@ -99,7 +98,7 @@ public class FragJob extends Fragment {
         button_ISFJ.setOnClickListener(new View.OnClickListener() {             // MBTI 버튼 연결
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getActivity(), MbtiActivity.class);
+                Intent intent = new Intent(getActivity(), JobMbtiActivity.class);
                 intent.putExtra("mbti", "ISFJ");                    // 다음 액티비티에 전달할 MBTI 정보
                 startActivity(intent);                                          // 해당하는 액티비티로 넘어감
             }
@@ -108,7 +107,7 @@ public class FragJob extends Fragment {
         button_INFJ.setOnClickListener(new View.OnClickListener() {             // MBTI 버튼 연결
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getActivity(), MbtiActivity.class);
+                Intent intent = new Intent(getActivity(), JobMbtiActivity.class);
                 intent.putExtra("mbti", "INFJ");                    // 다음 액티비티에 전달할 MBTI 정보
                 startActivity(intent);                                          // 해당하는 액티비티로 넘어감
             }
@@ -117,7 +116,7 @@ public class FragJob extends Fragment {
         button_INTJ.setOnClickListener(new View.OnClickListener() {             // MBTI 버튼 연결
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getActivity(), MbtiActivity.class);
+                Intent intent = new Intent(getActivity(), JobMbtiActivity.class);
                 intent.putExtra("mbti", "INTJ");                    // 다음 액티비티에 전달할 MBTI 정보
                 startActivity(intent);                                          // 해당하는 액티비티로 넘어감
             }
@@ -126,7 +125,7 @@ public class FragJob extends Fragment {
         button_ISTP.setOnClickListener(new View.OnClickListener() {             // MBTI 버튼 연결
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getActivity(), MbtiActivity.class);
+                Intent intent = new Intent(getActivity(), JobMbtiActivity.class);
                 intent.putExtra("mbti", "ISTP");                    // 다음 액티비티에 전달할 MBTI 정보
                 startActivity(intent);                                          // 해당하는 액티비티로 넘어감
             }
@@ -135,7 +134,7 @@ public class FragJob extends Fragment {
         button_ISFP.setOnClickListener(new View.OnClickListener() {             // MBTI 버튼 연결
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getActivity(), MbtiActivity.class);
+                Intent intent = new Intent(getActivity(), JobMbtiActivity.class);
                 intent.putExtra("mbti", "ISFP");                    // 다음 액티비티에 전달할 MBTI 정보
                 startActivity(intent);                                          // 해당하는 액티비티로 넘어감
             }
@@ -144,7 +143,7 @@ public class FragJob extends Fragment {
         button_INFP.setOnClickListener(new View.OnClickListener() {             // MBTI 버튼 연결
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getActivity(), MbtiActivity.class);
+                Intent intent = new Intent(getActivity(), JobMbtiActivity.class);
                 intent.putExtra("mbti", "INFP");                    // 다음 액티비티에 전달할 MBTI 정보
                 startActivity(intent);                                          // 해당하는 액티비티로 넘어감
             }
@@ -153,7 +152,7 @@ public class FragJob extends Fragment {
         button_INTP.setOnClickListener(new View.OnClickListener() {             // MBTI 버튼 연결
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getActivity(), MbtiActivity.class);
+                Intent intent = new Intent(getActivity(), JobMbtiActivity.class);
                 intent.putExtra("mbti", "INTP");                    // 다음 액티비티에 전달할 MBTI 정보
                 startActivity(intent);                                          // 해당하는 액티비티로 넘어감
             }
@@ -162,7 +161,7 @@ public class FragJob extends Fragment {
         button_ESTP.setOnClickListener(new View.OnClickListener() {             // MBTI 버튼 연결
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getActivity(), MbtiActivity.class);
+                Intent intent = new Intent(getActivity(), JobMbtiActivity.class);
                 intent.putExtra("mbti", "ESTP");                    // 다음 액티비티에 전달할 MBTI 정보
                 startActivity(intent);                                          // 해당하는 액티비티로 넘어감
             }
@@ -171,7 +170,7 @@ public class FragJob extends Fragment {
         button_ESFP.setOnClickListener(new View.OnClickListener() {             // MBTI 버튼 연결
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getActivity(), MbtiActivity.class);
+                Intent intent = new Intent(getActivity(), JobMbtiActivity.class);
                 intent.putExtra("mbti", "ESFP");                    // 다음 액티비티에 전달할 MBTI 정보
                 startActivity(intent);                                          // 해당하는 액티비티로 넘어감
             }
@@ -180,7 +179,7 @@ public class FragJob extends Fragment {
         button_ENFP.setOnClickListener(new View.OnClickListener() {             // MBTI 버튼 연결
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getActivity(), MbtiActivity.class);
+                Intent intent = new Intent(getActivity(), JobMbtiActivity.class);
                 intent.putExtra("mbti", "ENFP");                    // 다음 액티비티에 전달할 MBTI 정보
                 startActivity(intent);                                          // 해당하는 액티비티로 넘어감
             }
@@ -189,7 +188,7 @@ public class FragJob extends Fragment {
         button_ENTP.setOnClickListener(new View.OnClickListener() {             // MBTI 버튼 연결
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getActivity(), MbtiActivity.class);
+                Intent intent = new Intent(getActivity(), JobMbtiActivity.class);
                 intent.putExtra("mbti", "ENTP");                    // 다음 액티비티에 전달할 MBTI 정보
                 startActivity(intent);                                          // 해당하는 액티비티로 넘어감
             }
@@ -198,7 +197,7 @@ public class FragJob extends Fragment {
         button_ESTJ.setOnClickListener(new View.OnClickListener() {             // MBTI 버튼 연결
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getActivity(), MbtiActivity.class);
+                Intent intent = new Intent(getActivity(), JobMbtiActivity.class);
                 intent.putExtra("mbti", "ESTJ");                    // 다음 액티비티에 전달할 MBTI 정보
                 startActivity(intent);                                          // 해당하는 액티비티로 넘어감
             }
@@ -207,7 +206,7 @@ public class FragJob extends Fragment {
         button_ESFJ.setOnClickListener(new View.OnClickListener() {             // MBTI 버튼 연결
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getActivity(), MbtiActivity.class);
+                Intent intent = new Intent(getActivity(), JobMbtiActivity.class);
                 intent.putExtra("mbti", "ESFJ");                    // 다음 액티비티에 전달할 MBTI 정보
                 startActivity(intent);                                          // 해당하는 액티비티로 넘어감
             }
@@ -216,7 +215,7 @@ public class FragJob extends Fragment {
         button_ENFJ.setOnClickListener(new View.OnClickListener() {             // MBTI 버튼 연결
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getActivity(), MbtiActivity.class);
+                Intent intent = new Intent(getActivity(), JobMbtiActivity.class);
                 intent.putExtra("mbti", "ENFJ");                    // 다음 액티비티에 전달할 MBTI 정보
                 startActivity(intent);                                          // 해당하는 액티비티로 넘어감
             }
@@ -225,7 +224,7 @@ public class FragJob extends Fragment {
         button_ENTJ.setOnClickListener(new View.OnClickListener() {             // MBTI 버튼 연결
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getActivity(), MbtiActivity.class);
+                Intent intent = new Intent(getActivity(), JobMbtiActivity.class);
                 intent.putExtra("mbti", "ENTJ");                    // 다음 액티비티에 전달할 MBTI 정보
                 startActivity(intent);                                          // 해당하는 액티비티로 넘어감
             }

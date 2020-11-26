@@ -1,6 +1,5 @@
 package com.example.ced.activity;
 
-import android.app.Person;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
@@ -21,8 +20,6 @@ import com.google.gson.JsonParser;
 
 import java.io.IOException;
 import java.io.InputStream;
-import java.lang.reflect.Array;
-import java.util.ArrayList;
 import java.util.Random;
 
 public class MainActivity extends AppCompatActivity {
@@ -66,24 +63,22 @@ public class MainActivity extends AppCompatActivity {
         });
         fragjob = new FragJob();                                            // 각 프래그먼트를 연결
         fraguser = new FragUser();                                          // 각 프래그먼트를 연결
-        fragchallenge = new FragChallenge();                                     // 각 프래그먼트를 연결
+        fragchallenge = new FragChallenge();                                // 각 프래그먼트를 연결
 
         intent = getIntent();                                               // 현재 intent를 받아옴
         Bundle bundle = new Bundle();                                       // 데이터를 위한 객체 생성
         UserID = intent.getStringExtra("UserID");                     // login에서 넘겨준 정보 할당
-        UserName = intent.getStringExtra("UserName");
-//        UserTime = intent.getStringExtra("Time");
-        // login에서 넘겨준 정보 할당
+        UserName = intent.getStringExtra("UserName");                 // login에서 넘겨준 정보 할당
+
         bundle.putString("UserID", UserID);                                 // 프래그먼트에 넘겨줄 정보를 번들에 넣어줌
-        bundle.putString("UserName", UserName);
-//        bundle.putString("Time",UserTime);
-        // 프래그먼트에 넘겨줄 정보를 번들에 넣어줌
-        fragchallenge.setArguments(bundle);                                 // 해당 정보는 알아서 사용하면 됨
+        bundle.putString("UserName", UserName);                             // 프래그먼트에 넘겨줄 정보를 번들에 넣어줌
+
+        fragchallenge.setArguments(bundle);                                 // challenge 프래그먼트에 정보 전달
 
         bundle.putString("FamousName", famousName);                         // 프래그먼트에 넘겨줄 정보를 번들에 넣어줌
         bundle.putString("FamousSaying", famousSaying);                     // 프래그먼트에 넘겨줄 정보를 번들에 넣어줌
-        fraguser.setArguments(bundle);                                      // user 프래그먼트에 정보를 전달
-                                                                            // 각자 필요한 정보를 전달 받으면 됨(challenge라면 똑같이 적으면 됨)
+        fraguser.setArguments(bundle);                                      // user 프래그먼트에 정보 전달
+
         setFragment(0);                                                     // 첫 프래그먼트 화면을 무엇으로 지정해줄 것인지 선택
     }
 

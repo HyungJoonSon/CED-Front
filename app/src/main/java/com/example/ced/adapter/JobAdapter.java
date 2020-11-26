@@ -10,7 +10,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 
 import com.example.ced.R;
-import com.example.ced.data.JobData;
+import com.example.ced.data.JobDataResponse;
 
 import java.util.List;
 
@@ -21,7 +21,7 @@ public class JobAdapter extends ArrayAdapter {
     // 여기서 첫번째는 액티비티, 두번째는 list 레이아웃, 세번째는 정보가 있는 List이다.
     // 레이아웃을 지정하지 않는 이유 : 만들면서 view를 지정하기 때문임
     // 즉, adapter를 만들 때 지정하지 않고, adapter 내부의 view를 만들 때 레이아웃을 지정한다.
-    public JobAdapter(@NonNull Context context, List<JobData> list) {
+    public JobAdapter(@NonNull Context context, List<JobDataResponse> list) {
         super(context, 0, list);
     }
 
@@ -30,10 +30,10 @@ public class JobAdapter extends ArrayAdapter {
     public View getView(int position, View convertView, ViewGroup parent) {
 
         if (convertView == null) {
-            convertView = LayoutInflater.from(getContext()).inflate(R.layout.listview_job_item, parent, false);
+            convertView = LayoutInflater.from(getContext()).inflate(R.layout.view_job_item, parent, false);
         }
 
-        JobData jobSummary = (JobData) getItem(position);
+        JobDataResponse jobSummary = (JobDataResponse) getItem(position);
 
         TextView jobname = convertView.findViewById(R.id.jobsummaryname);
         TextView jobfield = convertView.findViewById(R.id.jobsummaryfield);

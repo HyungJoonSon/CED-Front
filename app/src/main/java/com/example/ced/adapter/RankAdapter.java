@@ -47,7 +47,7 @@ public class RankAdapter extends RecyclerView.Adapter<RankAdapter.ViewHolder> {
     // 해당 ViewHolder는 스크롤이 되면서 보이게 되지 않는 이상,
     // 함수를 사용하지 않으면 내용이 바뀌지 않는다.
     public RankAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.listview_challenge_item, parent, false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.view_challenge_item, parent, false);
         RankAdapter.ViewHolder viewHolder = new RankAdapter.ViewHolder(view);       // 해당 뷰를 만들어진 xml을 기반으로 구성하고 뷰홀더로 생성
         return viewHolder;                                                          // 뷰홀더 리턴
     }
@@ -59,9 +59,9 @@ public class RankAdapter extends RecyclerView.Adapter<RankAdapter.ViewHolder> {
     // 즉, 객체가 사라지지 않고 setter를 통해서 내용이 바뀐 뒤 재사용 된다.
     // 다른말로는 ListView는 삭제와 생성을 반복하고, RecycleView는 수정이 반복된다고 보면 된다.
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        holder.userRank.setText(Integer.toString(list.get(position).getRank()));              // 뷰 홀더 내부의 아이템뷰 랭킹을 재정의
-        holder.userId.setText(list.get(position).getUserId());                                // 뷰 홀더 내부의 아이템뷰 아이디을 재정의
-        holder.userTime.setText(list.get(position).getTime());              // 뷰 홀더 내부의 아이템뷰 시간을 재정의
+        holder.userRank.setText(Integer.toString(list.get(position).getRank()));        // 뷰 홀더 내부의 아이템뷰 랭킹을 재정의
+        holder.userId.setText(list.get(position).getUserName());                        // 뷰 홀더 내부의 아이템뷰 아이디을 재정의
+        holder.userTime.setText(list.get(position).getTime());                          // 뷰 홀더 내부의 아이템뷰 시간을 재정의
     }
 
     @Override

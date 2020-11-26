@@ -26,16 +26,15 @@ public class JobSelectorActivity extends AppCompatActivity {
     private List<String> items;
     private ArrayAdapter<String> adapter;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_job_selector);                         // xml, java 연결
 
-        listview = (ListView) findViewById(R.id.listview_job);
-        jobbackbnt = (ImageButton) findViewById(R.id.jobbackbtn);
-        choicebtn = (Button) findViewById(R.id.choicebtn);
-        selectAllButton = (Button) findViewById(R.id.selectAll);                // xml의 컴포넌트와 연결
+        listview = findViewById(R.id.listview_job);
+        jobbackbnt = findViewById(R.id.jobbackbtn);
+        choicebtn = findViewById(R.id.choicebtn);
+        selectAllButton = findViewById(R.id.selectAll);                         // xml의 컴포넌트와 연결
 
 
         items = new ArrayList<String>();                                        // 빈 데이터 리스트 생성.
@@ -78,7 +77,7 @@ public class JobSelectorActivity extends AppCompatActivity {
 
         // ArrayAdapter 생성. 아이템 View를 선택(multiple choice)가능하도록 만듦.
         adapter = new ArrayAdapter(this, android.R.layout.simple_list_item_multiple_choice, items);
-        
+
         listview.setAdapter(adapter);                                           // listview와 Adapter 연결
 
 
@@ -88,7 +87,6 @@ public class JobSelectorActivity extends AppCompatActivity {
                 finish();
             }
         });
-
 
 
         choicebtn.setOnClickListener(new View.OnClickListener() {               // 완료 버튼
@@ -104,7 +102,7 @@ public class JobSelectorActivity extends AppCompatActivity {
                     }
                 }
 
-                if(!trueCheckList) {                                            // 싱글톤 패턴으로 선택된지 확인함(없다면 아무것도 안함)
+                if (!trueCheckList) {                                            // 싱글톤 패턴으로 선택된지 확인함(없다면 아무것도 안함)
                     Toast.makeText(JobSelectorActivity.this, "선택된 항목이 없습니다.", Toast.LENGTH_SHORT).show();
                     return;
                 }
@@ -118,9 +116,9 @@ public class JobSelectorActivity extends AppCompatActivity {
                 }
 
                 jobfieldbuffer.deleteCharAt(jobfieldbuffer.lastIndexOf(", "));  // 마지막에 ", "를 삭제해줌
-                                                                                // 위 과정을 거치면 정보는 "ㅁㄴㅇㄹ, ㅁㄴㅇㄹ, ㅁㄴㅇㄹ" 형식이 됨
+                // 위 과정을 거치면 정보는 "ㅁㄴㅇㄹ, ㅁㄴㅇㄹ, ㅁㄴㅇㄹ" 형식이 됨
 
-                Intent intent = new Intent(getApplicationContext(), JobInfoActivity.class);
+                Intent intent = new Intent(getApplicationContext(), JobInfoListActivity.class);
                 intent.putExtra("jobSelect", jobfieldbuffer.toString());  // 해당 자료를 넘겨줌
                 startActivity(intent);                                          // 다음 화면으로 넘어감
             }

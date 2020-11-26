@@ -29,7 +29,7 @@ public class MbtiAdapter extends ArrayAdapter {
     public View getView(int position, View convertView, ViewGroup parent) {
 
         if (convertView == null) {
-            convertView = LayoutInflater.from(getContext()).inflate(R.layout.listview_mbti_item, parent, false);
+            convertView = LayoutInflater.from(getContext()).inflate(R.layout.view_mbti_item, parent, false);
         }
 
         String mbtiJob = (String) getItem(position);

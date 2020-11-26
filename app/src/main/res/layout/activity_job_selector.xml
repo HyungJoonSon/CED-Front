@@ -1,11 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
     <LinearLayout
         android:id="@+id/job_data_selecterTop"
@@ -25,7 +24,7 @@
             android:id="@+id/jobbackbtn"
             android:layout_width="40dp"
             android:layout_height="40dp"
-            android:background="@drawable/setting_ripple"
+            android:background="@drawable/button_transparent_ripple"
             android:outlineAmbientShadowColor="@color/black"
             android:src="@drawable/ic_baseline_arrow_back" />
 
@@ -46,15 +45,14 @@
             android:layout_width="50dp"
             android:layout_height="0dp" />
 
-<!--        user_record_ripple-->
         <Button
             android:id="@+id/choicebtn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:background="@drawable/rank_stopwatch_ripple"
-            android:stateListAnimator="@null"
+            android:background="@drawable/button_gray_ripple"
             android:fontFamily="@font/nbgothic"
             android:gravity="center_horizontal|center_vertical"
+            android:stateListAnimator="@null"
             android:text="완료"
             android:textColor="@color/black"
             android:textSize="20dp" />
@@ -99,16 +97,17 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent">
+
         <Button
             android:id="@+id/selectAll"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="@drawable/user_record_ripple"
-            android:text="Select All"
+            android:background="@drawable/button_transparent_ripple"
             android:fontFamily="@font/nbgothic"
+            android:text="Select All"
+            android:textColor="@color/black"
             android:textSize="25dp"
-            android:textStyle="bold"
-            android:textColor="@color/black" />
+            android:textStyle="bold" />
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

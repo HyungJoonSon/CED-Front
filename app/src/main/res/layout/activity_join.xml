@@ -70,7 +70,7 @@
                     android:id="@+id/check_id"
                     android:layout_width="90dp"
                     android:layout_height="45dp"
-                    android:background="@drawable/login_ripple"
+                    android:background="@drawable/button_gradient_ripple"
                     android:text="아이디 검사"
                     android:textColor="#FF000000"
                     android:textSize="9.5dp" />
@@ -114,7 +114,7 @@
                     android:id="@+id/check_name"
                     android:layout_width="90dp"
                     android:layout_height="45dp"
-                    android:background="@drawable/login_ripple"
+                    android:background="@drawable/button_gradient_ripple"
                     android:text="이름 검사"
                     android:textColor="#FF000000"
                     android:textSize="9.5dp" />
@@ -125,7 +125,7 @@
                 android:layout_width="300dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
-                android:background="@drawable/login_ripple"
+                android:background="@drawable/button_gradient_ripple"
                 android:text="가입하기"
                 android:textColor="#FF000000"
                 app:layout_constraintEnd_toEndOf="parent"

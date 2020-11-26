@@ -69,10 +69,10 @@ public class LoginActivity extends AppCompatActivity {
 
                 if (cor_id.length() > 0) {                              // 만약 입력된 문자가 있다면
                     input_id = true;                                    // input_id을 true로 초기화하고
-                    if (input_pwd)                                          // password도 입력이 되어 있다면
-                        login_btn.setEnabled(true);                         // 버튼을 활성화 해줌
-                    else                                                    // 입력이 안되어 있다면
-                        login_btn.setEnabled(false);                        // 버튼을 비활성화 함
+                    if (input_pwd)                                      // password도 입력이 되어 있다면
+                        login_btn.setEnabled(true);                     // 버튼을 활성화 해줌
+                    else                                                // 입력이 안되어 있다면
+                        login_btn.setEnabled(false);                    // 버튼을 비활성화 함
                 } else {                                                // 만약 입력된 문자가 없다면
                     input_id = false;                                   // input_id를 false로 초기화하고
                     login_btn.setEnabled(false);                        // 버튼을 비활성화 함
@@ -95,10 +95,10 @@ public class LoginActivity extends AppCompatActivity {
 
                 if (cor_pwd.length() > 0) {                             // 만약 입력된 문자가 있다면
                     input_pwd = true;                                   // input_pwd을 true로 초기화하고
-                    if (input_id)                                           // password도 입력이 되어 있다면
-                        login_btn.setEnabled(true);                         // 버튼을 활성화 해줌
-                        else                                                // 입력이 안되어 있다면
-                        login_btn.setEnabled(false);                        // 버튼을 비활성화 함
+                    if (input_id)                                       // password도 입력이 되어 있다면
+                        login_btn.setEnabled(true);                     // 버튼을 활성화 해줌
+                    else                                                // 입력이 안되어 있다면
+                        login_btn.setEnabled(false);                    // 버튼을 비활성화 함
                 } else {                                                // 만약 입력된 문자가 없다면
                     input_pwd = false;                                  // input_pwd을 false로 초기화하고
                     login_btn.setEnabled(false);                        // 버튼을 비활성화 함

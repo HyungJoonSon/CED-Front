@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".activity.UserRecordListActivity">
+
+    <LinearLayout
+        android:id="@+id/recordtop"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:paddingLeft="15dp"
+        android:paddingTop="10dp"
+        android:paddingRight="15dp"
+        android:paddingBottom="10dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageButton
+            android:id="@+id/recordbackbtn"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:background="@drawable/button_transparent_ripple"
+            android:outlineAmbientShadowColor="@color/black"
+            android:src="@drawable/ic_baseline_arrow_back" />
+
+        <View
+            android:layout_width="5dp"
+            android:layout_height="0dp" />
+
+        <TextView
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/bmhanna"
+            android:gravity="center_vertical"
+            android:text="기록지"
+            android:textColor="@color/black"
+            android:textSize="40dp" />
+
+        <View
+            android:layout_width="145dp"
+            android:layout_height="0dp" />
+
+        <ImageButton
+            android:id="@+id/recordaddbtn"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:background="@drawable/button_transparent_ripple"
+            android:outlineAmbientShadowColor="@color/black"
+            android:src="@drawable/ic_baseline_add" />
+    </LinearLayout>
+
+    <View
+        android:id="@+id/view"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="#a0a0a0"
+        app:layout_constraintBottom_toBottomOf="@+id/recordtop"
+        tools:layout_editor_absoluteX="15dp" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recordlist"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="64dp"
+        android:background="@drawable/button_transparent_ripple"
+        android:clickable="true"
+        android:divider="@android:color/transparent"
+        android:paddingLeft="15dp"
+        android:paddingTop="10dp"
+        android:paddingRight="15dp"
+        android:paddingBottom="10dp"
+        android:scrollbars="vertical"
+        app:layout_constraintTop_toBottomOf="@+id/recordtop" />
+</androidx.constraintlayout.widget.ConstraintLayout>

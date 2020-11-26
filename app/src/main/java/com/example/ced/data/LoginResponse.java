@@ -6,13 +6,13 @@ public class LoginResponse {
     @SerializedName("UserName")
     private String userName;
 
-    @SerializedName("code")
-    private int code;
+    @SerializedName("ResultCode")
+    private int resultCode;
 
     public String getUserName() {
         return userName;
     }
     public int getCode() {
-        return code;
+        return resultCode;
     }
 }

@@ -2,21 +2,25 @@ package com.example.ced.data;
 
 import com.google.gson.annotations.SerializedName;
 
-import java.io.Serializable;
-import java.util.List;
-
 public class JobDataResponse {
-    @SerializedName("code")
-    private int code;
+    @SerializedName("JobField")
+    private String jobField;
 
-    @SerializedName("result")
-    private List<JobData> result;
+    @SerializedName("JobName")
+    private String jobName;
 
-    public int getCode() {
-        return code;
+    @SerializedName("JobInfo")
+    private String jobInfo;
+
+    public String getJobField() {
+        return jobField;
     }
 
-    public List<JobData> getResult() {
-        return result;
+    public String getJobName() {
+        return jobName;
+    }
+
+    public String getJobInfo() {
+        return jobInfo;
     }
 }
