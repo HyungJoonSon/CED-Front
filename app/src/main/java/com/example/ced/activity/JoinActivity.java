@@ -111,7 +111,6 @@ public class JoinActivity extends AppCompatActivity {
         check_id.setOnClickListener(new View.OnClickListener() {        // 버튼을 클릭 했을 때 모션을 정의
             @Override
             public void onClick(View v) {
-                join_progressbar.setVisibility(View.VISIBLE);           // progressbar를 활성화 하고 특수문자 확인
                 boolean noSpecial = join_id.getText().toString().matches("^[ㄱ-ㅎ가-힣a-zA-Z0-9]*$");
                 if (!noSpecial) {
                     Toast.makeText(JoinActivity.this, "아이디에 특수문자가 들어갔습니다.", Toast.LENGTH_SHORT).show();
@@ -119,6 +118,7 @@ public class JoinActivity extends AppCompatActivity {
                 }
                 // 특수문자 사용 여부 검사
 
+                join_progressbar.setVisibility(View.VISIBLE);           // progressbar를 활성화 하고 특수문자 확인
                 checkID(join_id.getText().toString());
                 // 인터넷 연결 검사, 중복 검사
             }
@@ -128,7 +128,6 @@ public class JoinActivity extends AppCompatActivity {
         check_name.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                join_progressbar.setVisibility(View.VISIBLE);           // progressbar를 활성화 하고 특수문자 확인
                 boolean noSpecial = join_name.getText().toString().matches("^[ㄱ-ㅎ가-힣a-zA-Z0-9]*$");
                 if (!noSpecial) {
                     Toast.makeText(JoinActivity.this, "이름에 특수문자가 들어갔습니다.", Toast.LENGTH_SHORT).show();
@@ -136,6 +135,7 @@ public class JoinActivity extends AppCompatActivity {
                 }
                 // 특수문자 사용 여부 검사
 
+                join_progressbar.setVisibility(View.VISIBLE);           // progressbar를 활성화 하고 특수문자 확인
                 checkName(join_name.getText().toString());
                 // 인터넷 연결 검사, 중복 검사
             }
