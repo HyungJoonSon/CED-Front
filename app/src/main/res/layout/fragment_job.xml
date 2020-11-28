@@ -319,7 +319,6 @@
             android:text="직업정보"
             android:textColor="@color/black"
             android:textSize="25dp" />
-
     </LinearLayout>
 
     <View
